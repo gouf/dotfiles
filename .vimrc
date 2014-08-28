@@ -1,6 +1,7 @@
-version 6.0
+version 7.4
 set titlestring=vim
 set t_Co=256
+set nocp
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
@@ -66,6 +67,15 @@ let g:cakephp_enable_auto_mode = 1
 " vim-quickrun
 let g:quickrun_config={'*': {'split': ''}}
 
+" syntax for jade
+au BufNewFile,BufRead *.jade setf jade
+
+" syntastic
+let g:syntastic_ruby_checkers = ['rubocop']
+
+" remove trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Vundle
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
@@ -80,7 +90,7 @@ Bundle 'kana/vim-smartinput'
 Bundle 'violetyk/cake.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'kannokanno/previm'
-Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
@@ -89,6 +99,12 @@ Bundle 'flomotlik/vim-livereload'
 Bundle 'osyo-manga/vim-over'
 Bundle 'vim-scripts/Highlight-UnMatched-Brackets'
 Bundle 'vim-scripts/Changed'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'toyamarinyon/vim-swift'
+Bundle 'tpope/vim-endwise'
+Bundle 'ngmy/vim-rubocop'
+Bundle 'vim-scripts/ruby-matchit'
+Bundle 'scrooloose/syntastic'
 " Color Scheme
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'mattn/emmet-vim'
