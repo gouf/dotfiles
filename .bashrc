@@ -5,6 +5,11 @@ HISTFILESIZE=2000
 # bashmarks - https://github.com/huyng/bashmarks
 source ~/.local/bin/bashmarks.sh
 
+# git - https://github.com/git/git/tree/master/contrib/completion
+GIT_PS1_SHOWDIRTYSTATE=true
+source ~/.gitcompletion/git-prompt.sh
+source ~/.gitcompletion/git-completion.bash
+
 # hub - https://github.com/github/hub/
 source ~/.hub/hub.bash_completion.sh
 
