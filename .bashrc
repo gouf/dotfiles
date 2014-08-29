@@ -5,6 +5,9 @@ HISTFILESIZE=2000
 # bashmarks - https://github.com/huyng/bashmarks
 source ~/.local/bin/bashmarks.sh
 
+# hub - https://github.com/github/hub/
+source ~/.hub/hub.bash_completion.sh
+
 function mkcd {
  dir="$*";
  mkdir -p "$dir" && cd "$dir";
