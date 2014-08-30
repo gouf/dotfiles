@@ -32,5 +32,11 @@ function mvcd {
 # Git Ignore Request
 function gi() { curl http://www.gitignore.io/api/$@ ;}
 
+if [ -x "`which go`" ]; then
+  export GOROOT=`go env GOROOT`
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
+
 export EDITOR="vim"
 export MAKE_OPTS=-j12
