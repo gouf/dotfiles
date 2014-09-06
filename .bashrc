@@ -30,7 +30,7 @@ function mvcd {
 } 
 
 # Git Ignore Request
-function gi() { curl http://www.gitignore.io/api/$@ ;}
+function gi() { curl -s https://www.gitignore.io/api/$@ ;}
 
 if [ -x "`which go`" ]; then
   export GOROOT=`go env GOROOT`
