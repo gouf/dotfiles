@@ -80,6 +80,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimfiler'
+Bundle 'Shougo/neosnippet.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdtree'
