@@ -11,7 +11,6 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 set encoding=utf-8
 set backspace=2
-set fileencodings=utf-8,ucs-bom,default,latin1
 set helplang=ja
 set modelines=0
 set window=0
