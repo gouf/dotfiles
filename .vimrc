@@ -90,6 +90,7 @@ smap <silent><C-F>            <Plug>(neosnippet_expand_or_jump)
 "}}}
 
 " Vundle
+Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimfiler'
