@@ -6,10 +6,11 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 nmap gx <Plug>NetrwBrowseX
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set encoding=utf-8
+set fileformat=unix
 set backspace=2
 set helplang=ja
 set modelines=0
@@ -31,6 +32,7 @@ set nocompatible
 set scrolloff=5
 set colorcolumn=80
 set ruler
+set list " shows hidden characters as control character
 syntax on
 "colorscheme desert
 colorscheme jellybeans
@@ -89,7 +91,39 @@ smap <silent><C-F>            <Plug>(neosnippet_expand_or_jump)
 " xmap <silent>o              <Plug>(neosnippet_register_oneshot_snippet)
 "}}}
 
+" airline
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#branch#enabled = 0
+" unicode symbols
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+set guifont=Octicons
+let g:airline_left_sep = ' »'
+let g:airline_left_sep = ' ▶'
+let g:airline_right_sep = ' «'
+let g:airline_right_sep = ' ◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇ '
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline_section_b =
+        \ '%{airline#extensions#branch#get_head()}' .
+        \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
+        \ '%t%( %M%)'
+
+set laststatus=2
+
 " Vundle
+Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'bling/vim-airline'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
@@ -113,7 +147,6 @@ Bundle 't9md/vim-chef'
 Bundle 'flomotlik/vim-livereload'
 Bundle 'osyo-manga/vim-over'
 Bundle 'vim-scripts/Highlight-UnMatched-Brackets'
-Bundle 'vim-scripts/Changed'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'toyamarinyon/vim-swift'
 Bundle 'tpope/vim-endwise'
@@ -123,5 +156,4 @@ Bundle 'scrooloose/syntastic'
 " Color Scheme
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'mattn/emmet-vim'
-Bundle 'rcmdnk/vim-markdown'
 Bundle 'ap/vim-css-color'
