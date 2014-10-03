@@ -121,6 +121,7 @@ let g:airline_section_b =
 set laststatus=2
 
 " Vundle
+Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
