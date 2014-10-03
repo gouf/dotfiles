@@ -120,6 +120,11 @@ let g:airline_section_b =
 
 set laststatus=2
 
+" Enable slim syntax highlight
+" autocmd FileType slim setlocal foldmethod=indent
+autocmd BufNewFile,BufRead *.slim set filetype=slim
+
+
 " Vundle
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-fugitive'
