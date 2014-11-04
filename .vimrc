@@ -33,6 +33,7 @@ set scrolloff=5
 set colorcolumn=80
 set ruler
 set list " shows hidden characters as control character
+set completeopt=menu,preview
 syntax on
 "colorscheme desert
 colorscheme jellybeans
@@ -47,6 +48,9 @@ set printencoding=utf-8
 let g:user_emmet_settings = {
 \  'lang':'ja',
 \}
+
+au BufNewFile,BufRead *.go set filetype=go
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Vundle
 set rtp+=~/.vim/vundle/
@@ -91,6 +95,19 @@ smap <silent><C-F>            <Plug>(neosnippet_expand_or_jump)
 " xmap <silent>o              <Plug>(neosnippet_register_oneshot_snippet)
 "}}}
 
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 " airline
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
@@ -124,7 +141,38 @@ set laststatus=2
 " autocmd FileType slim setlocal foldmethod=indent
 autocmd BufNewFile,BufRead *.slim set filetype=slim
 
+" AlpacaTags
+augroup AlpacaTags
+  autocmd!
+  if exists(':Tags')
+    autocmd BufWritePost Gemfile TagsBundle
+    autocmd BufEnter * TagsSet
+    " 毎回保存と同時更新する場合はコメントを外す
+    " autocmd BufWritePost * TagsUpdate
+  endif
+augroup END
+
+" Go lang complement
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+
+" let g:quickrun_config = {
+" \  'go': {
+" \    'command': '8g',
+" \    'exec': ['8g %s', '8l -o %s:p:r %s:p:r.8', '%s:p:r %a', 'rm -f %s:p:r']
+" \  }
+" \}
+
+let g:quickrun_config.go = {
+\     'type': 'go',
+\     'command': 'go',
+\     'exec': '%c run %s'
+\     }
+
 " Vundle
+Bundle 'fatih/vim-go'
+Bundle 'vim-jp/vim-go-extra'
+Bundle 'thinca/vim-quickrun'
+Bundle 'alpaca-tc/alpaca_tags'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
@@ -142,7 +190,6 @@ Bundle 'vim-scripts/less-syntax'
 Bundle 'vim-scripts/Zen-Color-Scheme'
 Bundle 'kana/vim-smartinput'
 Bundle 'violetyk/cake.vim'
-Bundle 'thinca/vim-quickrun'
 Bundle 'kannokanno/previm'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'ecomba/vim-ruby-refactoring'
