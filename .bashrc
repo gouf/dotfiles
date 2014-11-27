@@ -40,3 +40,10 @@ fi
 
 export EDITOR="vim"
 export MAKE_OPTS=-j12
+
+# Colored diff
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
