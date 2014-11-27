@@ -169,6 +169,7 @@ let g:quickrun_config.go = {
 \     }
 
 " Vundle
+Bundle 'Shutnik/jshint2.vim'
 Bundle 'fatih/vim-go'
 Bundle 'vim-jp/vim-go-extra'
 Bundle 'thinca/vim-quickrun'
