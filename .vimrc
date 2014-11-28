@@ -72,11 +72,17 @@ let g:cakephp_enable_auto_mode = 1
 " vim-quickrun
 let g:quickrun_config={'*': {'split': ''}}
 
-" syntax for jade
+" syntax highlight for jade
 au BufNewFile,BufRead *.jade setf jade
 
 " syntastic
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_mode_map = {
+  \ 'mode': 'active',
+  \ 'active_filetypes': ['ruby', 'javascript'],
+  \ 'passive_filetypes': []
+  \ }
 
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -189,7 +195,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/dbext.vim'
 Bundle 'vim-scripts/less-syntax'
 Bundle 'vim-scripts/Zen-Color-Scheme'
-Bundle 'kana/vim-smartinput'
+" Bundle 'kana/vim-smartinput'
+Bundle "jiangmiao/auto-pairs"
 Bundle 'violetyk/cake.vim'
 Bundle 'kannokanno/previm'
 Bundle 'vim-scripts/matchit.zip'
