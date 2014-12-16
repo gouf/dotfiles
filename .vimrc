@@ -2,7 +2,7 @@ version 7.4
 set titlestring=vim
 set t_Co=256
 set nocp
-if &cp | set nocp | endif
+" if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 nmap gx <Plug>NetrwBrowseX
@@ -17,8 +17,6 @@ set modelines=0
 set window=0
 set history=1000
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
-" vim: set ft=vim :
-
 set title
 set number
 set smarttab
@@ -35,9 +33,6 @@ set ruler
 set list " shows hidden characters as control character
 set completeopt=menu,preview
 syntax on
-"colorscheme desert
-colorscheme jellybeans
-"colorscheme hybrid
 
 " Encoding
 set encoding=utf-8
@@ -53,7 +48,7 @@ au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Vundle
-set rtp+=~/.vim/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 filetype plugin on
 
@@ -118,10 +113,12 @@ endif
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#enabled = 0
+
 " unicode symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
 set guifont=Octicons
 let g:airline_left_sep = ' »'
 let g:airline_left_sep = ' ▶'
@@ -200,7 +197,6 @@ Bundle "jiangmiao/auto-pairs"
 Bundle 'violetyk/cake.vim'
 Bundle 'kannokanno/previm'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 't9md/vim-chef'
@@ -217,3 +213,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'ap/vim-css-color'
+
+"colorscheme desert
+colorscheme jellybeans
+"colorscheme hybrid
