@@ -44,6 +44,8 @@ let g:user_emmet_settings = {
 \  'lang':'ja',
 \}
 
+au BufNewFile,BufRead Guardfile set filetype=ruby
+
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
