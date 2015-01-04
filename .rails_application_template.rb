@@ -31,7 +31,6 @@ end
 after_bundle do
   run 'mv README.rdoc README.md'
   run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
-  run 'bundle update'
 
   git :init
   git add: '.'
