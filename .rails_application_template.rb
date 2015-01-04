@@ -31,7 +31,7 @@ end
 after_bundle do
   run 'mv README.rdoc README.md'
   run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
-  run 'curl https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
+  run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rails_best_practices'
   run 'bundle exec guard init rubocop'
