@@ -1,0 +1,7 @@
+# Ref: https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - Guardfile
+    - bin/*
+    - vendor/**/*
