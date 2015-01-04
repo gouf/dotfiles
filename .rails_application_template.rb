@@ -31,6 +31,9 @@ end
 after_bundle do
   run 'mv README.rdoc README.md'
   run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
+  run 'bundle exec guard init rspec'
+  run 'bundle exec guard init rails_best_practices'
+  run 'bundle exec guard init rubocop'
 
   git :init
   git add: '.'
