@@ -1,1 +1,2 @@
 --skip-test-unit
+--template=https://github.com/gouf/dotfiles/raw/master/.rails_application_template.rb
