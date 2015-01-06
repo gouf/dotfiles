@@ -4,12 +4,17 @@ gem_group :doc do
   gem 'yard'
 end
 
-gem_group :development do
+gem 'rb-readline'
+gem 'slim-rails'
+
+group :development do
   gem 'rubocop', require: false
   gem 'guard'
   gem 'guard-rubocop'
   gem 'guard-rspec'
   gem 'guard-rails_best_practices'
+  gem 'pry-rails'
+  gem 'pry-coolline'
 end
 
 gem_group :development, :test do
