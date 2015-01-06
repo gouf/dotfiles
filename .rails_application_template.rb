@@ -9,7 +9,7 @@ gem_group :development do
   gem 'guard'
   gem 'guard-rubocop'
   gem 'guard-rspec'
-  gem 'guard-rails_best_practices', github: 'thejchap/guard-rails_best_practices', branch: 'guard-2'
+  gem 'guard-rails_best_practices'
 end
 
 gem_group :development, :test do
