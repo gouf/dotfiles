@@ -15,12 +15,14 @@ gem_group :development do
   gem 'guard-rails_best_practices'
   gem 'pry-rails'
   gem 'pry-coolline'
+  gem 'pry-byebug'
 end
 
 gem_group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'fuubar'
+  gem 'timecop'
 end
 
 gem_group :test do
@@ -40,6 +42,7 @@ after_bundle do
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rails_best_practices'
   run 'bundle exec guard init rubocop'
+  run 'bundle exec rails generate rspec:install'
 
   git :init
   git add: '.'
