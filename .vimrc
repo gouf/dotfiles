@@ -174,6 +174,7 @@ let g:quickrun_config.go = {
 \     }
 
 " Vundle
+Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'Shutnik/jshint2.vim'
 Bundle 'fatih/vim-go'
 Bundle 'vim-jp/vim-go-extra'
