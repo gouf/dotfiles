@@ -174,6 +174,7 @@ let g:quickrun_config.go = {
 \     }
 
 " Vundle
+Bundle 'vim-scripts/AnsiEsc.vim'
 Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'Shutnik/jshint2.vim'
 Bundle 'fatih/vim-go'
