@@ -173,8 +173,15 @@ let g:quickrun_config.go = {
 \     'exec': '%c run %s'
 \     }
 
+" indent guides
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=darkgrey
+hi IndentGuidesEven ctermbg=lightgrey
+let g:indent_guides_enable_on_vim_startup = 1
+
 " Vundle
 Bundle 'vim-scripts/AnsiEsc.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'Shutnik/jshint2.vim'
 Bundle 'fatih/vim-go'
