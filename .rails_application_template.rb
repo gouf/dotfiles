@@ -16,6 +16,7 @@ gem_group :development do
   gem 'pry-rails'
   gem 'pry-coolline'
   gem 'pry-byebug'
+  gem 'annotate'
 end
 
 gem_group :development, :test do
