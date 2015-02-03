@@ -28,7 +28,7 @@ set formatoptions-=ro
 set autoindent
 set nocompatible
 set scrolloff=5
-set colorcolumn=80
+set colorcolumn=120
 set ruler
 set list " shows hidden characters as control character
 set completeopt=menu,preview
