@@ -32,6 +32,13 @@ function mvcd {
 # Git Ignore Request
 function gi() { curl -s https://www.gitignore.io/api/$@ ;}
 
+# Rails i18n locale xx.yml
+function lo() { curl -s https://cdn.rawgit.com/svenfuchs/rails-i18n/master/rails/locale//$@.yml ;}
+
+# License file
+# apache, artistic, cc0, eclipse, affero, gpl2, gpl3, lgpl2, lgpl3, isc, mit, mozilla, nbsd, unlicense, sbsd
+function li() { curl -L -s https://licensedownload.herokuapp.com/$@ ;}
+
 if [ -x "`which go`" ]; then
   export GOROOT=`go env GOROOT`
   export GOPATH=$HOME/go
