@@ -7,6 +7,8 @@ end
 gem 'rb-readline'
 gem 'slim-rails'
 
+gem 'rails_safe_tasks'
+
 gem_group :development do
   gem 'rubocop', require: false
   gem 'guard'
