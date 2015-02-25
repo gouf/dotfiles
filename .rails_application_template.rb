@@ -8,6 +8,7 @@ gem 'rb-readline'
 gem 'slim-rails'
 
 gem 'rails_safe_tasks'
+gem 'nprogress-rails'
 
 gem_group :development do
   gem 'rubocop', require: false
@@ -46,6 +47,8 @@ after_bundle do
   run 'bundle exec guard init rails_best_practices'
   run 'bundle exec guard init rubocop'
   run 'bundle exec rails generate rspec:install'
+  run 'echo "//= require nprogress" >> app/assets/javascripts/application.js'
+  run 'echo "//= require nprogress-turbolinks" >> app/assets/javascripts/application.js'
 
   git :init
   git add: '.'
