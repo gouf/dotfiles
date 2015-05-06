@@ -15,7 +15,6 @@ gem_group :development do
   gem 'guard'
   gem 'guard-rubocop'
   gem 'guard-rspec'
-  gem 'guard-rails_best_practices'
   gem 'pry-rails'
   gem 'pry-coolline'
   gem 'pry-byebug'
