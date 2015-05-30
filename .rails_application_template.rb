@@ -19,6 +19,7 @@ gem_group :development do
   gem 'pry-coolline'
   gem 'pry-byebug'
   gem 'annotate'
+  gem 'squasher'
 end
 
 gem_group :development, :test do
