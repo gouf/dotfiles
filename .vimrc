@@ -32,7 +32,6 @@ set colorcolumn=120
 set ruler
 set list " shows hidden characters as control character
 set completeopt=menu,preview
-syntax on
 
 " Encoding
 set encoding=utf-8
@@ -44,15 +43,13 @@ let g:user_emmet_settings = {
 \  'lang':'ja',
 \}
 
-au BufNewFile,BufRead Guardfile set filetype=ruby
-
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-filetype plugin on
+au BufNewFile,BufRead Guardfile set filetype=ruby
+
+filetype plugin indent on
+syntax on
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
@@ -75,9 +72,11 @@ au BufNewFile,BufRead *.jade setf jade
 " syntastic
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_php_checkers = ['phpcs']
+let g:syntastic_php_phpcs_args='--standard=psr2'
 let g:syntastic_mode_map = {
   \ 'mode': 'active',
-  \ 'active_filetypes': ['ruby', 'javascript'],
+  \ 'active_filetypes': ['ruby', 'javascript', 'php'],
   \ 'passive_filetypes': []
   \ }
 
@@ -179,51 +178,101 @@ hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=lightgrey
 let g:indent_guides_enable_on_vim_startup = 1
 
-" Vundle
-Bundle 'vim-scripts/AnsiEsc.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'Shutnik/jshint2.vim'
-Bundle 'fatih/vim-go'
-Bundle 'vim-jp/vim-go-extra'
-Bundle 'thinca/vim-quickrun'
-Bundle 'alpaca-tc/alpaca_tags'
-Bundle 'slim-template/vim-slim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'bling/vim-airline'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimfiler'
-Bundle 'Shougo/neosnippet.vim'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/dbext.vim'
-Bundle 'vim-scripts/less-syntax'
-Bundle 'vim-scripts/Zen-Color-Scheme'
-" Bundle 'kana/vim-smartinput'
-Bundle "jiangmiao/auto-pairs"
-Bundle 'violetyk/cake.vim'
-Bundle 'kannokanno/previm'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 't9md/vim-chef'
-Bundle 'flomotlik/vim-livereload'
-Bundle 'osyo-manga/vim-over'
-Bundle 'vim-scripts/Highlight-UnMatched-Brackets'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'toyamarinyon/vim-swift'
-Bundle 'tpope/vim-endwise'
-Bundle 'ngmy/vim-rubocop'
-Bundle 'vim-scripts/ruby-matchit'
-Bundle 'scrooloose/syntastic'
-" Color Scheme
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'ap/vim-css-color'
+execute pathogen#infect()
+
+
+let g:previm_open_cmd = 'google-chrome &'
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+ " Note: Skip initialization for vim-tiny or vim-small.
+ if 0 | endif
+
+ if has('vim_starting')
+   if &compatible
+     set nocompatible               " Be iMproved
+   endif
+
+   " Required:
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
+
+call neobundle#begin(expand($VIMBUNDLE))
+  NeoBundle 'tyru/open-browser.vim'
+  NeoBundle 'kannokanno/previm'
+  NeoBundle 'gmarik/Vundle.vim'
+  NeoBundle 'bronson/vim-trailing-whitespace'
+  NeoBundle 'tpope/vim-pathogen'
+  NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundle 'vim-scripts/AnsiEsc.vim'
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'ekalinin/Dockerfile.vim'
+  NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'mxw/vim-jsx'
+  NeoBundle 'Shutnik/jshint2.vim'
+  NeoBundle 'fatih/vim-go'
+  NeoBundle 'vim-jp/vim-go-extra'
+  NeoBundle 'thinca/vim-quickrun'
+  NeoBundle 'alpaca-tc/alpaca_tags'
+  NeoBundle 'slim-template/vim-slim'
+  NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'airblade/vim-gitgutter'
+  NeoBundle 'bling/vim-airline'
+  NeoBundle 'ecomba/vim-ruby-refactoring'
+  NeoBundle 'Shougo/neocomplcache'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/vimfiler'
+  NeoBundle 'Shougo/neosnippet.vim'
+  NeoBundle 'tpope/vim-rails'
+  NeoBundle 'tpope/vim-surround'
+  NeoBundle 'scrooloose/nerdtree'
+  NeoBundle 'vim-scripts/dbext.vim'
+  NeoBundle 'vim-scripts/less-syntax'
+  NeoBundle 'vim-scripts/Zen-Color-Scheme'
+  NeoBundle 'kana/vim-smartinput'
+  NeoBundle "jiangmiao/auto-pairs"
+  NeoBundle 'violetyk/cake.vim'
+  NeoBundle 'kannokanno/previm'
+  NeoBundle 'vim-scripts/matchit.zip'
+  NeoBundle 'rizzatti/funcoo.vim'
+  NeoBundle 'rizzatti/dash.vim'
+  NeoBundle 't9md/vim-chef'
+  NeoBundle 'flomotlik/vim-livereload'
+  NeoBundle 'osyo-manga/vim-over'
+  NeoBundle 'vim-scripts/Highlight-UnMatched-Brackets'
+  NeoBundle 'digitaltoad/vim-jade'
+  NeoBundle 'toyamarinyon/vim-swift'
+  NeoBundle 'tpope/vim-endwise'
+  NeoBundle 'ngmy/vim-rubocop'
+  NeoBundle 'vim-scripts/ruby-matchit'
+  NeoBundle 'scrooloose/syntastic'
+  " Color Scheme
+  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'mattn/emmet-vim'
+  NeoBundle 'ap/vim-css-color'
+call neobundle#end()
 
 "colorscheme desert
 colorscheme jellybeans
