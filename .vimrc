@@ -83,6 +83,16 @@ let g:syntastic_mode_map = {
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Ref: http://hail2u.net/blog/software/vim-additional-highlights.html
+" Additional highlights
+augroup AdditionalHighlights
+  autocmd!
+
+  " Zenkaku space
+  autocmd ColorScheme * highlight link ZenkakuSpace Error
+  autocmd Syntax * syntax match ZenkakuSpace containedin=ALL /　/
+augroup END
+
 " neosnippet https://github.com/Shougo/neosnippet.vim
 " https://gist.github.com/alpaca-tc/4521425
 
@@ -194,9 +204,6 @@ augroup END
    if &compatible
      set nocompatible               " Be iMproved
    endif
-
-   " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
  endif
 
  " Required:
@@ -220,10 +227,11 @@ augroup END
  NeoBundleCheck
 
 call neobundle#begin(expand($VIMBUNDLE))
+  " Vundle
   NeoBundle 'tyru/open-browser.vim'
   NeoBundle 'kannokanno/previm'
   NeoBundle 'gmarik/Vundle.vim'
-  NeoBundle 'bronson/vim-trailing-whitespace'
+  " NeoBundle 'bronson/vim-trailing-whitespace'
   NeoBundle 'tpope/vim-pathogen'
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'vim-scripts/AnsiEsc.vim'
