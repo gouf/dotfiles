@@ -9,6 +9,7 @@ source ~/.local/bin/bashmarks.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 source ~/.gitcompletion/git-prompt.sh
 source ~/.gitcompletion/git-completion.bash
+export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
 # hub - https://github.com/github/hub/
 source ~/.hub/hub.bash_completion.sh
