@@ -20,6 +20,8 @@ gem_group :development do
   gem 'pry-byebug'
   gem 'annotate'
   gem 'squasher'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 gem_group :development, :test do
