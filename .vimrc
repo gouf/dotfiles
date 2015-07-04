@@ -33,6 +33,10 @@ set ruler
 set list " shows hidden characters as control character
 set completeopt=menu,preview
 
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 " Encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
@@ -197,90 +201,62 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
- " Note: Skip initialization for vim-tiny or vim-small.
- if 0 | endif
-
- if has('vim_starting')
-   if &compatible
-     set nocompatible               " Be iMproved
-   endif
- endif
-
- " Required:
- call neobundle#begin(expand('~/.vim/bundle/'))
-
- " Let NeoBundle manage NeoBundle
- " Required:
- NeoBundleFetch 'Shougo/neobundle.vim'
-
- " My Bundles here:
- " Refer to |:NeoBundle-examples|.
- " Note: You don't set neobundle setting in .gvimrc!
-
- call neobundle#end()
-
- " Required:
- filetype plugin indent on
-
- " If there are uninstalled bundles found on startup,
- " this will conveniently prompt you to install them.
- NeoBundleCheck
-
-call neobundle#begin(expand($VIMBUNDLE))
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
   " Vundle
-  NeoBundle 'tyru/open-browser.vim'
-  NeoBundle 'kannokanno/previm'
-  NeoBundle 'gmarik/Vundle.vim'
-  " NeoBundle 'bronson/vim-trailing-whitespace'
-  NeoBundle 'tpope/vim-pathogen'
-  NeoBundle 'kchmck/vim-coffee-script'
-  NeoBundle 'vim-scripts/AnsiEsc.vim'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  NeoBundle 'ekalinin/Dockerfile.vim'
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'mxw/vim-jsx'
-  NeoBundle 'Shutnik/jshint2.vim'
-  NeoBundle 'fatih/vim-go'
-  NeoBundle 'vim-jp/vim-go-extra'
-  NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'alpaca-tc/alpaca_tags'
-  NeoBundle 'slim-template/vim-slim'
-  NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'airblade/vim-gitgutter'
-  NeoBundle 'bling/vim-airline'
-  NeoBundle 'ecomba/vim-ruby-refactoring'
-  NeoBundle 'Shougo/neocomplcache'
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/vimfiler'
-  NeoBundle 'Shougo/neosnippet.vim'
-  NeoBundle 'tpope/vim-rails'
-  NeoBundle 'tpope/vim-surround'
-  NeoBundle 'scrooloose/nerdtree'
-  NeoBundle 'vim-scripts/dbext.vim'
-  NeoBundle 'vim-scripts/less-syntax'
-  NeoBundle 'vim-scripts/Zen-Color-Scheme'
-  NeoBundle 'kana/vim-smartinput'
-  NeoBundle "jiangmiao/auto-pairs"
-  NeoBundle 'violetyk/cake.vim'
-  NeoBundle 'kannokanno/previm'
-  NeoBundle 'vim-scripts/matchit.zip'
-  NeoBundle 'rizzatti/funcoo.vim'
-  NeoBundle 'rizzatti/dash.vim'
-  NeoBundle 't9md/vim-chef'
-  NeoBundle 'flomotlik/vim-livereload'
-  NeoBundle 'osyo-manga/vim-over'
-  NeoBundle 'vim-scripts/Highlight-UnMatched-Brackets'
-  NeoBundle 'digitaltoad/vim-jade'
-  NeoBundle 'toyamarinyon/vim-swift'
-  NeoBundle 'tpope/vim-endwise'
-  NeoBundle 'ngmy/vim-rubocop'
-  NeoBundle 'vim-scripts/ruby-matchit'
-  NeoBundle 'scrooloose/syntastic'
+  Plugin 'elixir-lang/vim-elixir'
+  Plugin 'rhysd/vim-crystal'
+  Plugin 'tyru/open-browser.vim'
+  Plugin 'kannokanno/previm'
+  Plugin 'gmarik/Vundle.vim'
+  Plugin 'tpope/vim-pathogen'
+  Plugin 'kchmck/vim-coffee-script'
+  Plugin 'vim-scripts/AnsiEsc.vim'
+  Plugin 'nathanaelkane/vim-indent-guides'
+  Plugin 'ekalinin/Dockerfile.vim'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'mxw/vim-jsx'
+  Plugin 'Shutnik/jshint2.vim'
+  Plugin 'fatih/vim-go'
+  Plugin 'vim-jp/vim-go-extra'
+  Plugin 'thinca/vim-quickrun'
+  Plugin 'alpaca-tc/alpaca_tags'
+  Plugin 'slim-template/vim-slim'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'bling/vim-airline'
+  Plugin 'ecomba/vim-ruby-refactoring'
+  Plugin 'Shougo/neocomplcache'
+  Plugin 'Shougo/unite.vim'
+  Plugin 'Shougo/vimfiler'
+  Plugin 'Shougo/neosnippet.vim'
+  Plugin 'tpope/vim-rails'
+  Plugin 'tpope/vim-surround'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'vim-scripts/dbext.vim'
+  Plugin 'vim-scripts/less-syntax'
+  Plugin 'vim-scripts/Zen-Color-Scheme'
+  Plugin 'kana/vim-smartinput'
+  Plugin 'jiangmiao/auto-pairs'
+  Plugin 'violetyk/cake.vim'
+  Plugin 'vim-scripts/matchit.zip'
+  Plugin 'rizzatti/funcoo.vim'
+  Plugin 'rizzatti/dash.vim'
+  Plugin 't9md/vim-chef'
+  Plugin 'flomotlik/vim-livereload'
+  Plugin 'osyo-manga/vim-over'
+  Plugin 'vim-scripts/Highlight-UnMatched-Brackets'
+  Plugin 'digitaltoad/vim-jade'
+  Plugin 'toyamarinyon/vim-swift'
+  Plugin 'tpope/vim-endwise'
+  Plugin 'ngmy/vim-rubocop'
+  Plugin 'vim-scripts/ruby-matchit'
+  Plugin 'scrooloose/syntastic'
   " Color Scheme
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'ap/vim-css-color'
-call neobundle#end()
+  Plugin 'nanotech/jellybeans.vim'
+  Plugin 'mattn/emmet-vim'
+  Plugin 'ap/vim-css-color'
+call vundle#end()
 
 "colorscheme desert
 colorscheme jellybeans
