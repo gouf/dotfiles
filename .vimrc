@@ -195,7 +195,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 execute pathogen#infect()
 
 
-let g:previm_open_cmd = 'google-chrome &'
+let g:previm_open_cmd = 'gnome-open'
 augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
@@ -204,9 +204,11 @@ augroup END
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Plugin 'majutsushi/tagbar'
+  Plugin 'xolox/vim-easytags'
+  Plugin 'xolox/vim-misc'
   Plugin 'elixir-lang/vim-elixir'
   Plugin 'rhysd/vim-crystal'
-  Plugin 'tyru/open-browser.vim'
   Plugin 'kannokanno/previm'
   Plugin 'gmarik/Vundle.vim'
   Plugin 'tpope/vim-pathogen'
