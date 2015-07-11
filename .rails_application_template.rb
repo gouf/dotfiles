@@ -22,6 +22,7 @@ gem_group :development do
   gem 'squasher'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bullet'
 end
 
 gem_group :development, :test do
