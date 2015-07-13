@@ -14,6 +14,12 @@ export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)
 # hub - https://github.com/github/hub/
 source ~/.hub/hub.bash_completion.sh
 
+# Print some docker containers IP address
+function printip {
+ id="$*" # container id
+ docker inspect $id |grep IPAddress|sed -e "s/^[ \t ]*\"IPAddress\":\s\"//g"|sed -e "s/\",$//g"
+}
+
 function mkcd {
  dir="$*";
  mkdir -p "$dir" && cd "$dir";
