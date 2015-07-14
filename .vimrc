@@ -52,6 +52,8 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 au BufNewFile,BufRead Guardfile set filetype=ruby
 
+au BufNewFile,BufRead *.cjsx set filetype=coffee
+
 filetype plugin indent on
 syntax on
 
