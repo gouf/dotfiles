@@ -50,6 +50,7 @@ after_bundle do
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rubocop'
   run 'bundle exec rails generate rspec:install'
+  run 'echo "--format Fuubar" >> .rspec'
   # nprogress
   run 'echo "//= require nprogress" >> app/assets/javascripts/application.js'
   run 'echo "//= require nprogress-turbolinks" >> app/assets/javascripts/application.js'
