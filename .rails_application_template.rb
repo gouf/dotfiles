@@ -10,6 +10,10 @@ gem 'slim-rails'
 gem 'rails_safe_tasks'
 gem 'nprogress-rails'
 
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 gem_group :development do
   gem 'rubocop', require: false
   gem 'guard'
@@ -57,6 +61,9 @@ after_bundle do
   run 'echo "/*" >> app/assets/stylesheets/application.css'
   run 'echo " *= require nprogress" >> app/assets/stylesheets/application.css'
   run 'echo " */" >> app/assets/stylesheets/application.css'
+
+  # Bootstrap
+  run 'rails g bootstrap:install'
 
   git :init
   git add: '.'
