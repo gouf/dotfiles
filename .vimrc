@@ -51,9 +51,9 @@ let g:user_emmet_settings = {
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
-au BufNewFile,BufRead Guardfile set filetype=ruby
-
 au BufNewFile,BufRead *.cjsx set filetype=coffee
+
+au BufNewFile,BufRead Guardfile set filetype=ruby
 
 filetype plugin indent on
 syntax on
@@ -81,9 +81,10 @@ let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers = ['phpcs']
 let g:syntastic_php_phpcs_args='--standard=psr2'
+let g:syntastic_python_checkers = ['pep8']
 let g:syntastic_mode_map = {
   \ 'mode': 'active',
-  \ 'active_filetypes': ['ruby', 'javascript', 'php'],
+  \ 'active_filetypes': ['ruby', 'javascript', 'php', 'python'],
   \ 'passive_filetypes': []
   \ }
 
@@ -204,9 +205,19 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
+" vim-flay
+" let g:flay_on_open=0
+" let g:flay_on_save=1
+" let g:flay_minimum_mass=10
+" let g:flay_piet_text="✗"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  "Plugin 'prophittcorey/vim-flay'
+  Plugin 'nvie/vim-flake8'
+  Plugin 'groenewege/vim-less'
+  Plugin '2072/PHP-Indenting-for-VIm'
   Plugin 'majutsushi/tagbar'
   Plugin 'xolox/vim-easytags'
   Plugin 'xolox/vim-misc'
