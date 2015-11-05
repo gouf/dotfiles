@@ -36,7 +36,7 @@ set completeopt=menu,preview
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType php set tabstop=4|set shiftwidth=4|set noexpandtab
 
 " Encoding
 set encoding=utf-8
