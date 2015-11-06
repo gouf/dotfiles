@@ -35,6 +35,7 @@ gem_group :development, :test do
   gem 'factory_girl_rails'
   gem 'fuubar'
   gem 'timecop'
+  gem 'mutant-rspec'
 end
 
 gem_group :test do
