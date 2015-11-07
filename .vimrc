@@ -36,7 +36,7 @@ set completeopt=menu,preview
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType php set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 expandtab
 
 " Encoding
 set encoding=utf-8
@@ -75,10 +75,14 @@ let g:quickrun_config={'*': {'split': ''}}
 
 " syntax highlight for jade
 au BufNewFile,BufRead *.jade setf jade
+au BufRead,BufNewFile *.json set filetype=json
 
 " syntastic
 let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_php_checkers = ['phpcs']
 let g:syntastic_php_phpcs_args='--standard=psr2'
 let g:syntastic_python_checkers = ['pep8']
