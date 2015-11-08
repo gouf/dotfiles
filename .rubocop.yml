@@ -1,6 +1,4 @@
 # Ref: https://github.com/bbatsov/rubocop/blob/master/config/default.yml
-inherit_from:
-  - .rails_excludes.yml
 AllCops:
   RunRailsCops: true
   Exclude:
