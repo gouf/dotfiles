@@ -51,17 +51,13 @@ end
 after_bundle do
   run 'mv README.rdoc README.md'
   run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
-  # rubocop
-  run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
-  run 'bundle exec rubocop --auto-correct'
-  run 'bundle exec rubocop --auto-gen-config'
-  run 'echo "inherit_from:" >> .rubocop.yml'
-  run 'echo "  - .rubocop_todo.yml" >> .rubocop.yml'
+  
   # RSpec
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rubocop'
   run 'bundle exec rails generate rspec:install'
   run 'echo "--format Fuubar" >> .rspec'
+
   # nprogress
   run 'echo "//= require nprogress" >> app/assets/javascripts/application.js'
   run 'echo "//= require nprogress-turbolinks" >> app/assets/javascripts/application.js'
@@ -71,6 +67,13 @@ after_bundle do
 
   # Bootstrap
   run 'rails g bootstrap:install'
+
+  # rubocop
+  run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
+  run 'bundle exec rubocop --auto-correct'
+  run 'bundle exec rubocop --auto-gen-config'
+  run 'echo "inherit_from:" >> .rubocop.yml'
+  run 'echo "  - .rubocop_todo.yml" >> .rubocop.yml'
 
   # git
   git :init
