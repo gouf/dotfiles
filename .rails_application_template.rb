@@ -51,7 +51,7 @@ end
 after_bundle do
   run 'mv README.rdoc README.md'
   run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
-  run 'bundle exec rubocop --auto-gen-config .rails_excludes.yml'
+  run 'bundle exec rubocop --auto-gen-config'
   run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rubocop'
