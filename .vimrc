@@ -48,6 +48,8 @@ let g:user_emmet_settings = {
 \  'lang':'ja',
 \}
 
+au BufNewFile,BufRead Routefile set ft=ruby
+
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
@@ -79,7 +81,6 @@ au BufRead,BufNewFile *.json set filetype=json
 
 " syntastic
 let g:syntastic_ruby_checkers = ['rubocop']
-" let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_json_checkers=['jsonlint']
@@ -181,19 +182,17 @@ augroup END
 " Go lang complement
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
-" let g:quickrun_config = {
-" \  'go': {
-" \    'command': '8g',
-" \    'exec': ['8g %s', '8l -o %s:p:r %s:p:r.8', '%s:p:r %a', 'rm -f %s:p:r']
-" \  }
-" \}
-
 let g:quickrun_config.go = {
 \     'type': 'go',
 \     'command': 'go',
 \     'exec': '%c run %s'
 \     }
 
+" Swift quickrun
+let g:quickrun_config['swift'] = {
+  \ 'command': 'swift',
+  \ 'exec': '%c %o %s',
+  \}
 " indent guides
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=darkgrey
