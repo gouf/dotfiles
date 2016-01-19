@@ -86,7 +86,7 @@ let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_php_checkers = ['phpcs']
 let g:syntastic_php_phpcs_args='--standard=psr2'
-let g:syntastic_python_checkers = ['pep8']
+let g:syntastic_python_checkers = ['pep8', 'pyflakes']
 let g:syntastic_mode_map = {
   \ 'mode': 'active',
   \ 'active_filetypes': ['ruby', 'javascript', 'php', 'python'],
