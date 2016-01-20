@@ -218,6 +218,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
   "Plugin 'prophittcorey/vim-flay'
+  Plugin 'triglav/vim-visual-increment'
   Plugin 'nvie/vim-flake8'
   Plugin 'groenewege/vim-less'
   Plugin '2072/PHP-Indenting-for-VIm'
