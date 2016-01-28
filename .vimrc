@@ -38,6 +38,8 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 expandtab
 
+nmap <Leader>gd <Plug>(auto_git_diff_manual_update)
+
 " Encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,sjis,cp932,euc-jp,cp20932
@@ -218,6 +220,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
   "Plugin 'prophittcorey/vim-flay'
+  Plugin 'hotwatermorning/auto-git-diff'
   Plugin 'triglav/vim-visual-increment'
   Plugin 'nvie/vim-flake8'
   Plugin 'groenewege/vim-less'
