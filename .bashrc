@@ -249,3 +249,7 @@ alias phpunit='php $(which phpunit)'
 
 export PATH="/home/gou/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu15.10/usr/bin:$PATH"
 source /home/gou/.gitcompletion/git-flow-completion.bash
+
+# added by travis gem
+# [ -f /home/my_username/.travis/travis.sh ] && source /home/my_username/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
