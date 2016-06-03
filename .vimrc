@@ -17,6 +17,7 @@ set modelines=0
 set window=0
 set history=1000
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))|write %:p
+command! CurrentFilePath :echo expand('%:p')
 set title
 set number
 set smarttab
