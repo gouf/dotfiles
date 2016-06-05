@@ -264,3 +264,7 @@ function switch_git_config () {
   echo "git config user.name: $(git config user.name)"
   echo "git config user.email: $(git config user.email)"
 }
+
+function gouf () {
+  switch_git_config "gouf" "innocent.zero@gmail.com"
+}
