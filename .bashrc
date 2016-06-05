@@ -253,3 +253,14 @@ source /home/gou/.gitcompletion/git-flow-completion.bash
 # added by travis gem
 # [ -f /home/my_username/.travis/travis.sh ] && source /home/my_username/.travis/travis.sh
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+function switch_git_config () {
+  name=$1
+  email=$2
+
+  git config --global user.name $name
+  git config --global user.email $email
+  echo "Configuration has changed:"
+  echo "git config user.name: $(git config user.name)"
+  echo "git config user.email: $(git config user.email)"
+}
