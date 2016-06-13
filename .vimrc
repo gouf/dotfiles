@@ -82,6 +82,9 @@ let g:quickrun_config={'*': {'split': ''}}
 au BufNewFile,BufRead *.jade setf jade
 au BufRead,BufNewFile *.json set filetype=json
 
+" syntax highlight for textlint
+au BufRead,BufNewFile .textlintrc set filetype=json
+
 " syntastic
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_javascript_checkers = ['eslint']
