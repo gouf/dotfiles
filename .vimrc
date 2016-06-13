@@ -220,7 +220,7 @@ augroup END
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
-  "Plugin 'prophittcorey/vim-flay'
+  Plugin 'prophittcorey/vim-flay'
   Plugin 'hotwatermorning/auto-git-diff'
   Plugin 'triglav/vim-visual-increment'
   Plugin 'nvie/vim-flake8'
