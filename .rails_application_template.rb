@@ -49,9 +49,8 @@ end
 
 # works on Rails 4.2(?) or later
 after_bundle do
-  run 'mv README.rdoc README.md'
   run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
-  
+
   # RSpec
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rubocop'
