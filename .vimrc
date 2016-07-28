@@ -224,6 +224,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
   Plugin 'prophittcorey/vim-flay'
+  Plugin 'fousa/vim-flog'
   Plugin 'hotwatermorning/auto-git-diff'
   Plugin 'triglav/vim-visual-increment'
   Plugin 'nvie/vim-flake8'
