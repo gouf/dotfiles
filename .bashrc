@@ -268,3 +268,9 @@ function switch_git_config () {
 function gouf () {
   switch_git_config "gouf" "innocent.zero@gmail.com"
 }
+
+source $HOME/django_bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/gou/.sdkman"
+[[ -s "/home/gou/.sdkman/bin/sdkman-init.sh" ]] && source "/home/gou/.sdkman/bin/sdkman-init.sh"

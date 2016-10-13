@@ -39,6 +39,10 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 expandtab
 
+" Tag jump
+nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-j> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+
 nmap <Leader>gd <Plug>(auto_git_diff_manual_update)
 
 " Encoding
@@ -57,6 +61,7 @@ au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 au BufNewFile,BufRead *.cjsx set filetype=coffee
+au BufNewFile,BufRead *.coffee set filetype=coffee
 
 au BufNewFile,BufRead Guardfile set filetype=ruby
 
@@ -205,7 +210,8 @@ hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=lightgrey
 let g:indent_guides_enable_on_vim_startup = 1
 
-execute pathogen#infect()
+execute pathogen#infect('~/.anyenv/envs/rbenv/shims/{}')
+se shell=bash\ -l
 
 
 let g:previm_open_cmd = 'gnome-open'
