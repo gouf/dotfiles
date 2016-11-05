@@ -8,6 +8,10 @@ case $- in
       *) return;;
 esac
 
+if [[ $(uname -s) -eq 'Darwin' ]]; then
+  export LSCOLORS=gxfxcxdxbxegedabagacad
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 # HISTCONTROL=ignoreboth
@@ -125,7 +129,11 @@ source ~/.local/bin/bashmarks.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 source ~/.gitcompletion/git-prompt.sh
 source ~/.gitcompletion/git-completion.bash
-export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+if [[ $(uname -s) -eq 'Darwin' ]]; then
+  export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+else
+  export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+fi
 
 # hub - https://github.com/github/hub/
 export PATH=~/hub:$PATH

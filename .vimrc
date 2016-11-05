@@ -210,10 +210,6 @@ hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=lightgrey
 let g:indent_guides_enable_on_vim_startup = 1
 
-execute pathogen#infect('~/.anyenv/envs/rbenv/shims/{}')
-se shell=bash\ -l
-
-
 let g:previm_open_cmd = 'gnome-open'
 augroup PrevimSettings
     autocmd!
