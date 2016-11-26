@@ -282,3 +282,10 @@ source $HOME/django_bash_completion
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/gou/.sdkman"
 [[ -s "/home/gou/.sdkman/bin/sdkman-init.sh" ]] && source "/home/gou/.sdkman/bin/sdkman-init.sh"
+
+if [[ $(uname -s) -eq 'Darwin' ]]; then
+  # Ref :
+  # * [memory - Is there a Mac OS X Terminal version of the "free" command in Linux systems? - Ask Different](http://apple.stackexchange.com/questions/4286/is-there-a-mac-os-x-terminal-version-of-the-free-command-in-linux-systems)
+  # And copy free.py to /usr/local/bin
+  alias free="free.py"
+fi
