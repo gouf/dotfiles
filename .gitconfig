@@ -29,6 +29,7 @@
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  logo = log --pretty=oneline
   ls = ls-files
   sh = show-branch
   patch = diff --no-prefix --no-color
