@@ -65,6 +65,8 @@ au BufNewFile,BufRead *.coffee set filetype=coffee
 
 au BufNewFile,BufRead Guardfile set filetype=ruby
 
+au BufNewFile,BufRead *.swift se ft=swift
+
 filetype plugin indent on
 syntax on
 
@@ -82,6 +84,12 @@ let g:cakephp_enable_auto_mode = 1
 
 " vim-quickrun
 let g:quickrun_config={'*': {'split': ''}}
+
+let g:quickrun_config['swift'] = {
+  \ 'command': 'xcrun',
+  \ 'cmdopt': 'swift',
+  \ 'exec': '%c %o %s',
+  \}
 
 " syntax highlight for jade
 au BufNewFile,BufRead *.jade setf jade
