@@ -37,7 +37,7 @@ set completeopt=menu,preview
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType php setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 expandtab omnifunc=phpcomplete_extended#CompletePHP
 
 " Tag jump
 nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
@@ -233,6 +233,8 @@ augroup END
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Bundle 'Shougo/vimproc'
+  Bundle 'm2mdas/phpcomplete-extended'
   Plugin 'prophittcorey/vim-flay'
   Plugin 'fousa/vim-flog'
   Plugin 'hotwatermorning/auto-git-diff'
