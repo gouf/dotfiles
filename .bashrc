@@ -11,6 +11,12 @@ esac
 if [[ $(uname -s) -eq 'Darwin' ]]; then
   export LSCOLORS=gxfxcxdxbxegedabagacad
 fi
+# Git Ignore Request
+function gi() { curl -s https://www.gitignore.io/api/$@ ; }
+
+# License file
+# apache, artistic, cc0, eclipse, affero, gpl2, gpl3, lgpl2, lgpl3, isc, mit, mozilla, nbsd, unlicense, sbsd
+function li() { curl -s https://licensedownload.herokuapp.com/$@ ; }
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -42,7 +48,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+  xterm-color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -121,14 +127,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-HISTCONTROL=ignoreboth:erasedups
-# bashmarks - https://github.com/huyng/bashmarks
-source ~/.local/bin/bashmarks.sh
-
 # git - https://github.com/git/git/tree/master/contrib/completion
 GIT_PS1_SHOWDIRTYSTATE=true
-source ~/.gitcompletion/git-prompt.sh
-source ~/.gitcompletion/git-completion.bash
 if [[ $(uname -s) -eq 'Darwin' ]]; then
   export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 else
@@ -137,7 +137,6 @@ fi
 
 # hub - https://github.com/github/hub/
 export PATH=~/hub:$PATH
-source ~/.hub/hub.bash_completion.sh
 eval "$(hub alias -s)"
 
 # Print some docker containers IP address
@@ -162,18 +161,27 @@ function mvcd {
   mv "$file_name" "$file_path" && cd "$file_path";
 }
 
-# Git Ignore Request
-function gi() { curl -s https://www.gitignore.io/api/$@ ;}
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
 
 # Rails i18n locale xx.yml
 function lo() { curl -s https://cdn.rawgit.com/svenfuchs/rails-i18n/master/rails/locale//$@.yml ;}
+source $HOME/git-prompt.sh
 
-# License file
-# apache, artistic, cc0, eclipse, affero, gpl2, gpl3, lgpl2, lgpl3, isc, mit, mozilla, nbsd, unlicense, sbsd
-function li() { curl -L -s https://licensedownload.herokuapp.com/$@ ;}
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+alias composer="php ~/.composer/composer.phar"
+
 
 export EDITOR="vim"
 export MAKE_OPTS=-j4
+
+alias la="ls -a"
+alias ll="ls -l"
 
 # Colored diff
 if [[ -x `which colordiff` ]]; then
@@ -181,6 +189,9 @@ if [[ -x `which colordiff` ]]; then
 else
   alias diff='diff -u'
 fi
+
+source ~/.anyenv/envs/phpenv/completions/rbenv.bash
+source ~/.anyenv/completions/anyenv.bash
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -191,13 +202,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.composer:$PATH"
-
-if [[ -x `which colordiff` ]]; then
-  alias diff='colordiff -u'
-else
-  alias diff='diff -u'
-fi
-function li() { curl -L -s https://licensedownload.herokuapp.com/$@ ;}
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/golang
@@ -210,9 +214,10 @@ export PATH="~/.terraform:$PATH"
 
 alias fig=docker-compose
 
-export NPM_PACKAGES="${HOME}/.npm-packages"
+export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
+
 # Unset manpath so we can inherit from /etc/manpath via the `manpath`
 # command
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
@@ -252,14 +257,13 @@ fi
 
 # Load xdebug Zend extension with php command
 alias php='php -dzend_extension=xdebug.so'
+
 # PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
 alias phpunit='php $(which phpunit)'
 
-export PATH="/home/gou/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu15.10/usr/bin:$PATH"
-source /home/gou/.gitcompletion/git-flow-completion.bash
+export PATH="$HOME/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu15.10/usr/bin:$PATH"
 
 # added by travis gem
-# [ -f /home/my_username/.travis/travis.sh ] && source /home/my_username/.travis/travis.sh
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 function switch_git_config () {
@@ -277,13 +281,30 @@ function gouf () {
   switch_git_config "gouf" "innocent.zero@gmail.com"
 }
 
-source $HOME/django_bash_completion
+function init_plane_java_project() {
+  mkdir -p src/{main,test}/{resorces,java}
+  touch src/{main,test}/{resorces,java}/.gitkeep
+  gradle init
+}
+
+export ANDROID_HOME="/usr/local/Cellar/android-sdk/24.4.1_1/"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/gou/.sdkman"
-[[ -s "/home/gou/.sdkman/bin/sdkman-init.sh" ]] && source "/home/gou/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-if [[ $(uname -s) -eq 'Darwin' ]]; then
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+export GRADLE_USER_HOME="/usr/local/opt/gradle/libexec"
+
+export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
+
+# bashmarks - https://github.com/huyng/bashmarks
+# bash directory bookmark
+if [ -f ~/.local/bin/bashmarks.sh ]; then
+  source ~/.local/bin/bashmarks.sh
+fi
+
+if [[ $(uname -s) -eq 'Darwin' && $(which free.py) ]]; then
   # Ref :
   # * [memory - Is there a Mac OS X Terminal version of the "free" command in Linux systems? - Ask Different](http://apple.stackexchange.com/questions/4286/is-there-a-mac-os-x-terminal-version-of-the-free-command-in-linux-systems)
   # And copy free.py to /usr/local/bin
