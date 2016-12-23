@@ -9,9 +9,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias composer="php ~/.composer/composer.phar"
 
-alias la="ls -a"
-alias ll="ls -l"
-
 # Colored diff
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
