@@ -83,29 +83,8 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-# alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -174,21 +153,8 @@ export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
-alias composer="php ~/.composer/composer.phar"
-
-
 export EDITOR="vim"
 export MAKE_OPTS=-j4
-
-alias la="ls -a"
-alias ll="ls -l"
-
-# Colored diff
-if [[ -x `which colordiff` ]]; then
-  alias diff='colordiff -u'
-else
-  alias diff='diff -u'
-fi
 
 source ~/.anyenv/envs/phpenv/completions/rbenv.bash
 source ~/.anyenv/completions/anyenv.bash
@@ -211,9 +177,6 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 export PATH="~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH"
 export PATH="~/.terraform:$PATH"
-
-alias fig=docker-compose
-
 export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
@@ -249,17 +212,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
-
-if [[ `which ccat` ]]
-then
-  alias cat=ccat
-fi
-
-# Load xdebug Zend extension with php command
-alias php='php -dzend_extension=xdebug.so'
-
-# PHPUnit needs xdebug for coverage. In this case, just make an alias with php command prefix.
-alias phpunit='php $(which phpunit)'
 
 export PATH="$HOME/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu15.10/usr/bin:$PATH"
 
@@ -302,11 +254,4 @@ export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 # bash directory bookmark
 if [ -f ~/.local/bin/bashmarks.sh ]; then
   source ~/.local/bin/bashmarks.sh
-fi
-
-if [[ $(uname -s) -eq 'Darwin' && $(which free.py) ]]; then
-  # Ref :
-  # * [memory - Is there a Mac OS X Terminal version of the "free" command in Linux systems? - Ask Different](http://apple.stackexchange.com/questions/4286/is-there-a-mac-os-x-terminal-version-of-the-free-command-in-linux-systems)
-  # And copy free.py to /usr/local/bin
-  alias free="free.py"
 fi
