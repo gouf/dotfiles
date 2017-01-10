@@ -255,3 +255,7 @@ export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
 if [ -f ~/.local/bin/bashmarks.sh ]; then
   source ~/.local/bin/bashmarks.sh
 fi
+
+if [ -f ~/.homebrew_github_api_token ]; then
+  source ~/.homebrew_github_api_token
+fi
