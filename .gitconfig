@@ -32,6 +32,11 @@
   logo = log --pretty=oneline
   ls = ls-files
   sh = show-branch
+  sta = stash
   patch = diff --no-prefix --no-color
   today = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author=\"`git config --get user.name`\"'"
 
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
