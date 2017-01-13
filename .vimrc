@@ -233,6 +233,7 @@ augroup END
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Bundle 'Shougo/neosnippet-snippets'
   Bundle 'Shougo/vimproc'
   Bundle 'm2mdas/phpcomplete-extended'
   Plugin 'prophittcorey/vim-flay'
