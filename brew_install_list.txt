@@ -42,7 +42,6 @@ poppler
 postgresql
 python
 qt@5.5
-rbenv
 ruby
 sbt
 scala
