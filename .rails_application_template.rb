@@ -54,7 +54,6 @@ after_bundle do
   # RSpec
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rubocop'
-  # run 'bundle exec rails generate rspec:install'
   run 'echo "--format Fuubar" >> .rspec'
 
   # nprogress
@@ -63,9 +62,6 @@ after_bundle do
   run 'echo "/*" >> app/assets/stylesheets/application.css'
   run 'echo " *= require nprogress" >> app/assets/stylesheets/application.css'
   run 'echo " */" >> app/assets/stylesheets/application.css'
-
-  # Bootstrap
-  run 'rails g bootstrap:install'
 
   # rubocop
   run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
