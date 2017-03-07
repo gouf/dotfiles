@@ -49,7 +49,7 @@ end
 
 # works on Rails 4.2(?) or later
 after_bundle do
-  run 'curl https://www.gitignore.io/api/vim,rails > .gitignore'
+  run 'curl https://www.gitignore.io/api/vim,rails,node > .gitignore'
 
   # RSpec
   run 'bundle exec guard init rspec'
