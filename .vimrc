@@ -258,7 +258,6 @@ call vundle#begin()
   Plugin 'nvie/vim-flake8'
   Plugin 'groenewege/vim-less'
   Plugin '2072/PHP-Indenting-for-VIm'
-  Plugin 'majutsushi/tagbar'
   Plugin 'xolox/vim-easytags'
   Plugin 'xolox/vim-misc'
   Plugin 'elixir-lang/vim-elixir'
