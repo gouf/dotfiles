@@ -37,7 +37,20 @@ set completeopt=menu,preview
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType php setlocal tabstop=4 shiftwidth=4 expandtab omnifunc=phpcomplete_extended#CompletePHP
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+au BufNewFile,BufRead *.php se ft=php
+
+" StanAngeloff/php.vim
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
 
 " Tag jump
 nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
@@ -233,9 +246,9 @@ augroup END
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
-  Bundle 'Shougo/neosnippet-snippets'
-  Bundle 'Shougo/vimproc'
-  Bundle 'm2mdas/phpcomplete-extended'
+  Plugin 'StanAngeloff/php.vim'
+  Plugin 'Shougo/neosnippet-snippets'
+  Plugin 'Shougo/vimproc'
   Plugin 'prophittcorey/vim-flay'
   Plugin 'fousa/vim-flog'
   Plugin 'hotwatermorning/auto-git-diff'
@@ -306,7 +319,9 @@ se statusline+=%#warningmsg#
 se statusline+=%{SyntasticStatusLineFlag()}
 se statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+let g:phpcomplete_index_composer_command = 'php /Users/gou/.composer/composer.phar'
