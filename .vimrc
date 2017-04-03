@@ -249,6 +249,8 @@ call vundle#begin()
   Plugin 'StanAngeloff/php.vim'
   Plugin 'Shougo/neosnippet-snippets'
   Plugin 'Shougo/vimproc'
+  Plugin 'majutsushi/tagbar'
+  Plugin 'm2mdas/phpcomplete-extended'
   Plugin 'prophittcorey/vim-flay'
   Plugin 'fousa/vim-flog'
   Plugin 'hotwatermorning/auto-git-diff'
