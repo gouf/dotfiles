@@ -140,8 +140,10 @@ function mvcd {
   mv "$file_name" "$file_path" && cd "$file_path";
 }
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ $(uname -s) == "Darwin" ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 # Rails i18n locale xx.yml
