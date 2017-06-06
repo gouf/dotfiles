@@ -70,6 +70,10 @@ after_bundle do
   run 'echo "inherit_from:" >> .rubocop.yml'
   run 'echo "  - .rubocop_todo.yml" >> .rubocop.yml'
 
+  # Disable coffee-rails gem
+  run "cat Gemfile|ruby -ne 'puts $_ =~ /^(.+coffee-rails.+)$/ ? \"# \#{$1}\" : $_' > out"
+  run 'mv out Gemfile'
+
   # git
   git :init
   git add: '.'
