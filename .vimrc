@@ -111,21 +111,8 @@ au BufRead,BufNewFile *.json set filetype=json
 " syntax highlight for textlint
 au BufRead,BufNewFile .textlintrc set filetype=json
 
-" syntastic
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-let g:syntastic_json_checkers=['jsonlint']
-let g:syntastic_php_checkers = ['phpcs']
-let g:syntastic_php_phpcs_args='--standard=psr2'
-let g:syntastic_python_checkers = ['pep8', 'pyflakes']
-let g:syntastic_mode_map = {
-  \ 'mode': 'active',
-  \ 'active_filetypes': ['ruby', 'javascript', 'php', 'python'],
-  \ 'passive_filetypes': []
-  \ }
 
-" remove trailing whitespace
+" remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Ref: http://hail2u.net/blog/software/vim-additional-highlights.html
@@ -166,7 +153,6 @@ if has('conceal')
 endif
 
 " airline
-let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#enabled = 0
 
@@ -303,7 +289,7 @@ call vundle#begin()
   Plugin 'tpope/vim-endwise'
   Plugin 'ngmy/vim-rubocop'
   Plugin 'vim-scripts/ruby-matchit'
-  Plugin 'scrooloose/syntastic'
+  Plugin 'w0rp/ale'
   " Color Scheme
   Plugin 'nanotech/jellybeans.vim'
   Plugin 'mattn/emmet-vim'
@@ -317,7 +303,6 @@ colorscheme jellybeans
 execute pathogen#infect()
 
 se statusline+=%#warningmsg#
-se statusline+=%{SyntasticStatusLineFlag()}
 se statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
