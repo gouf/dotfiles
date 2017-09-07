@@ -121,7 +121,7 @@ eval "$(hub alias -s)"
 # Print some docker containers IP address
 function printip {
  id="$*" # container id
- docker inspect $id |grep IPAddress|sed -e "s/^[ \t ]*\"IPAddress\":\s\"//g"|sed -e "s/\",$//g"
+ sudo docker container inspect $id |grep IPAddress|sed -e "s/^[ \t ]*\"IPAddress\":\s\"//g"|sed -e "s/\",$//g"
 }
 
 function mkcd {
