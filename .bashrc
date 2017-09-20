@@ -238,6 +238,11 @@ function gouf () {
   switch_git_config "gouf" "innocent.zero@gmail.com"
 }
 
+function git_whoami () {
+  git config user.name
+  git config user.email
+}
+
 function init_plane_java_project() {
   mkdir -p src/{main,test}/{resorces,java}
   touch src/{main,test}/{resorces,java}/.gitkeep
