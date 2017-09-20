@@ -229,6 +229,11 @@ augroup END
 " let g:flay_minimum_mass=10
 " let g:flay_piet_text="✗"
 
+" Ale (Lint Engine)
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+let g:ale_sign_column_always = 1
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
