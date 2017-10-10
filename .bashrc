@@ -149,6 +149,8 @@ fi
 # Rails i18n locale xx.yml
 function lo() { curl -s https://cdn.rawgit.com/svenfuchs/rails-i18n/master/rails/locale//$@.yml ;}
 
+function heroku_app_name() { git remote -v| grep heroku | head -n 1 | egrep -o "\w+-\w+-[0-9]+"; }
+
 if [ -f $HOME/git-prompt.sh ]; then
   source $HOME/git-prompt.sh
 fi
@@ -259,6 +261,8 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export GRADLE_USER_HOME="/usr/local/opt/gradle/libexec"
 
 export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # bashmarks - https://github.com/huyng/bashmarks
 # bash directory bookmark
