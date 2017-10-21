@@ -316,3 +316,6 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:phpcomplete_index_composer_command = 'php /Users/gou/.composer/composer.phar'
+
+" change Spellcap background color
+hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#002442 guisp=DarkBlue
