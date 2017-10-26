@@ -243,7 +243,7 @@ call vundle#begin()
   Plugin 'majutsushi/tagbar'
   Plugin 'm2mdas/phpcomplete-extended'
   Plugin 'prophittcorey/vim-flay'
-  Plugin 'fousa/vim-flog'
+  Plugin 'malept/vim-flog'
   Plugin 'hotwatermorning/auto-git-diff'
   Plugin 'triglav/vim-visual-increment'
   Plugin 'nvie/vim-flake8'
