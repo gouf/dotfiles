@@ -32,7 +32,7 @@ end
 
 gem_group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'fuubar'
   gem 'timecop'
   gem 'mutant-rspec'
