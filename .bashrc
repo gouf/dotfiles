@@ -115,7 +115,7 @@ else
 fi
 
 # hub - https://github.com/github/hub/
-export PATH=~/hub:$PATH
+export PATH=~/.local:$PATH
 eval "$(hub alias -s)"
 
 # Print some docker containers IP address
