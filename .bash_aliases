@@ -8,7 +8,7 @@ alias la='ls -A'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias composer="php ~/.composer/composer.phar"
+alias composer="php ~/.local/bin/composer.phar"
 
 # Colored diff
 if [[ -x `which colordiff` ]]; then
