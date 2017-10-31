@@ -286,7 +286,6 @@ call vundle#begin()
   Plugin 'vim-scripts/matchit.zip'
   Plugin 'rizzatti/funcoo.vim'
   Plugin 'rizzatti/dash.vim'
-  Plugin 'flomotlik/vim-livereload'
   Plugin 'osyo-manga/vim-over'
   Plugin 'vim-scripts/Highlight-UnMatched-Brackets'
   Plugin 'digitaltoad/vim-jade'
