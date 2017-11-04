@@ -26,13 +26,15 @@ php:
 
 composer: php
 	# Composer
+	if [ ! -x ~/.local/bin/composer.phar ]; then \
 	mkdir -p ~/.local/bin \
 	&& cd ~/.local/bin \
 	&& php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 	&& php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
 	&& php composer-setup.php \
 	&& php -r "unlink('composer-setup.php');" \
-	&& cd
+	&& cd; \
+	fi
 
 vim: ruby
 	# Vim plugin dep
@@ -40,9 +42,12 @@ vim: ruby
 	&& sudo gem install flog flay bundler \
 	&& sudo apt install -y ctags
 	## Vim plugin manager
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then \
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim; \
+	fi
 
 dotfiles: git
+	if [ ! -e ~/.dotfiles ]; then \
 	git clone https://github.com/gouf/dotfiles.git ~/.dotfiles \
 	&& cd ~/.dotfiles \
 	&& rm -f ~/.bashrc ~/.bash_profile \
@@ -50,24 +55,31 @@ dotfiles: git
 	&& ln -s $(pwd)/.bash_aliases ~/.bash_aliases \
 	&& ln -s $(pwd)/.gitconfig ~/.gitconfig \
 	&& ln -s $(pwd)/.railsrc ~/.railsrc \
-	&& ln -s $(pwd)/.vimrc ~/.vimrc \
+	&& ln -s $(pwd)/.vimrc ~/.vimrc; \
+	fi
 
 anyenv: git
+	if [ ! -d ~/.anyenv ]; then \
 	git clone https://github.com/riywo/anyenv ~/.anyenv \
 	&& . ~/.bashrc \
 	&& anyenv install pyenv \
 	&& anyenv install rbenv \
 	&& anyenv install nodenv \
 	&& anyenv install phpenv \
-	&& . ~/.bashrc
+	&& . ~/.bashrc; \
+	fi
+
+anyenv_update: anyenv
 	## anyenv update
+	if [ ! -d ~/.anyenv/plugins/anyenv-update ]; then \
 	mkdir -p $(anyenv root)/plugins \
-	&& git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
+	&& git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update; \
+	fi
 
 golang:
 	sudo apt install -y golang
 
-hub: golang git
+hub: golang git ruby
 	cd \
 	&& git clone https://github.com/github/hub.git \
 	&& cd hub \
@@ -89,14 +101,17 @@ platinum_searcher: golang
 heroku: wget
 	wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
+uname = `uname -r`
+lsb_release = `lsb_release -cs`
+
 docker_ce:
 	# (arch == amd64)
-	sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual \
+	sudo apt-get install -y linux-image-extra-$(uname) linux-image-extra-virtual \
 	&& sudo apt install -y apt-transport-https ca-certificates software-properties-common \
 	&& curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
-	&& sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+	&& sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release) stable" \
 	&& sudo apt update \
-	&& sudo apt install docker-ce \
+	&& sudo apt install docker \
 	## docker gets control without sudo
 	sudo groupadd docker \
 	&& sudo gpasswd -a $(USER) docker
