@@ -13,12 +13,11 @@ tree:
 	sudo apt install -y tree
 
 ruby: apt_update
-	# Ruby dep
 	sudo apt install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs ruby-dev \
 	&& sudo apt install -y ruby
 
 php:
-	# PHP (Not work perfectly after installation. maybe not enough list of dependencies)
+	# (Not work perfectly after installation. maybe not enough list of dependencies)
 	sudo apt install -y php php-xdebug bison re2c bzip2
 
 composer: php
@@ -33,7 +32,6 @@ composer: php
 
 vim: ruby
 	# Vim plugin dep
-	# (if not enabled clipboard function)
 	sudo apt install -y vim vim-gtk \
 	&& sudo gem install flog flay bundler \
 	&& sudo apt install -y ctags
@@ -41,7 +39,6 @@ vim: ruby
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 dotfiles: git
-	# Dotfiles
 	git clone https://github.com/gouf/dotfiles.git ~/.dotfiles \
 	&& cd ~/.dotfiles \
 	&& rm -f ~/.bashrc ~/.bash_profile \
@@ -52,7 +49,6 @@ dotfiles: git
 	&& ln -s $(pwd)/.vimrc ~/.vimrc \
 
 anyenv: git
-	# anyenv
 	git clone https://github.com/riywo/anyenv ~/.anyenv \
 	&& . ~/.bashrc \
 	&& anyenv install pyenv \
@@ -68,7 +64,6 @@ golang:
 	sudo apt install -y golang
 
 hub: golang git
-	# hub
 	cd \
 	&& git clone https://github.com/github/hub.git \
 	&& cd hub \
@@ -77,7 +72,6 @@ hub: golang git
 	&& rm -rf hub
 
 bashmarks: git ruby
-	# bashmarks
 	cd \
 	&& git clone git://github.com/huyng/bashmarks.git \
 	&& cd bashmarks \
@@ -86,15 +80,13 @@ bashmarks: git ruby
 	&& rm -rf bashmarks
 
 platinum_searcher: golang
-	# The Platinum Searcher
 	go get -u github.com/monochromegane/the_platinum_searcher/...
 
 heroku: wget
-	# heroku
 	wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 docker_ce:
-	# Docker CE (Comunity Edition)
+	# (arch == amd64)
 	sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual \
 	&& sudo apt install -y apt-transport-https ca-certificates software-properties-common \
 	&& curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - \
@@ -106,7 +98,6 @@ docker_ce:
 	&& sudo gpasswd -a $(USER) docker
 
 git_flow: wget
-	# git-flow
 	cd \
 	&& curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh \
 	&& chmod +x gitflow-installer.sh \
@@ -117,5 +108,4 @@ git_flow: wget
 	sudo wget https://github.com/bobthecow/git-flow-completion/raw/master/git-flow-completion.bash
 
 postgresql:
-	# PostgreSQL
 	sudo apt install -y postgresql
