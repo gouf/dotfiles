@@ -11,6 +11,10 @@ esac
 if [[ $(uname -s) -eq 'Darwin' ]]; then
   export LSCOLORS=gxfxcxdxbxegedabagacad
 fi
+
+# List of Makefile targets
+function print_make_targets() { cat Makefile|egrep "^.+: ?+"|egrep "^[a-z_]+:"|cut -d: -f1 ; }
+
 # Git Ignore Request
 function gi() { curl -s https://www.gitignore.io/api/$@ ; }
 
