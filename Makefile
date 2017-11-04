@@ -1,5 +1,9 @@
 all: apt_update git wget tree ruby php composer vim dotfiles anyenv golang hub bashmarks platinum_searcher heroku docker_ce git_flow postgresql
 
+universe:
+	sudo add-apt-repository universe
+	sudo apt update
+
 apt_update:
 	sudo apt update
 
@@ -7,9 +11,9 @@ git:
 	sudo apt install -y git
 
 wget:
-	sudo apt install -y wget tree
+	sudo apt install -y wget
 
-tree:
+tree: universe
 	sudo apt install -y tree
 
 ruby: apt_update
