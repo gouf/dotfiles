@@ -36,7 +36,7 @@ composer: php
 	&& cd; \
 	fi
 
-vim: ruby
+vim: ruby dotfiles
 	# Vim plugin dep
 	sudo apt install -y vim vim-gtk \
 	&& sudo gem install flog flay bundler \
