@@ -42,8 +42,12 @@ vim: ruby
 	&& sudo gem install flog flay bundler \
 	&& sudo apt install -y ctags
 	## Vim plugin manager
-	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then \
+	if [ ! -e ~/.vim/bundle/Vundle.vim ]; then \
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim; \
+	vim +BundleInstall +qall; \
+	cd ~/.vim/bundle/vimproc/; \
+	make; \
+	cd; \
 	fi
 
 dotfiles: git
@@ -71,7 +75,7 @@ anyenv: git
 
 anyenv_update: anyenv
 	## anyenv update
-	if [ ! -d ~/.anyenv/plugins/anyenv-update ]; then \
+	if [ ! -e ~/.anyenv/plugins/anyenv-update ]; then \
 	mkdir -p $(anyenv root)/plugins \
 	&& git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update; \
 	fi
@@ -116,7 +120,7 @@ docker_ce:
 	sudo groupadd docker \
 	&& sudo gpasswd -a $(USER) docker
 
-git_flow: wget
+git_flow: wget curl
 	cd \
 	&& curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh \
 	&& chmod +x gitflow-installer.sh \
