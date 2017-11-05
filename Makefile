@@ -58,11 +58,11 @@ dotfiles: git
 	git clone https://github.com/gouf/dotfiles.git ~/.dotfiles \
 	&& cd ~/.dotfiles \
 	&& rm -f ~/.bashrc ~/.bash_profile \
-	&& ln -s $(pwd)/.bashrc ~/.bashrc \
-	&& ln -s $(pwd)/.bash_aliases ~/.bash_aliases \
-	&& ln -s $(pwd)/.gitconfig ~/.gitconfig \
-	&& ln -s $(pwd)/.railsrc ~/.railsrc \
-	&& ln -s $(pwd)/.vimrc ~/.vimrc; \
+	&& ln -s $(HOME)/.dotfiles/.bashrc ~/.bashrc \
+	&& ln -s $(HOME)/.dotfiles/.bash_aliases ~/.bash_aliases \
+	&& ln -s $(HOME)/.dotfiles/.gitconfig ~/.gitconfig \
+	&& ln -s $(HOME)/.dotfiles/.railsrc ~/.railsrc \
+	&& ln -s $(HOME)/.dotfiles/.vimrc ~/.vimrc; \
 	fi
 
 anyenv: git
