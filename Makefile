@@ -13,6 +13,9 @@ git:
 wget:
 	sudo apt install -y wget
 
+curl:
+	suto apt install -y curl
+
 tree: universe
 	sudo apt install -y tree
 
@@ -36,7 +39,7 @@ composer: php
 	&& cd; \
 	fi
 
-vim: ruby
+vim: ruby dotfiles
 	# Vim plugin dep
 	sudo apt install -y vim vim-gtk \
 	&& sudo gem install flog flay bundler \
