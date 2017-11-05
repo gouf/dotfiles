@@ -1,3 +1,6 @@
+# first command:
+# sudo apt install -y make curl && curl https://raw.githubusercontent.com/gouf/dotfiles/master/Makefile > Makefile && make
+
 all: apt_update git wget tree ruby php composer vim dotfiles anyenv golang hub bashmarks platinum_searcher heroku docker_ce git_flow postgresql
 
 universe:
@@ -56,7 +59,6 @@ vim: ruby dotfiles
 dotfiles: git
 	if [ ! -e ~/.dotfiles ]; then \
 	git clone https://github.com/gouf/dotfiles.git ~/.dotfiles \
-	&& cd ~/.dotfiles \
 	&& rm -f ~/.bashrc ~/.bash_profile \
 	&& ln -s $(HOME)/.dotfiles/.bashrc ~/.bashrc \
 	&& ln -s $(HOME)/.dotfiles/.bash_aliases ~/.bash_aliases \
@@ -68,12 +70,10 @@ dotfiles: git
 anyenv: git
 	if [ ! -d ~/.anyenv ]; then \
 	git clone https://github.com/riywo/anyenv ~/.anyenv \
-	&& . ~/.bashrc \
-	&& anyenv install pyenv \
-	&& anyenv install rbenv \
-	&& anyenv install nodenv \
-	&& anyenv install phpenv \
-	&& . ~/.bashrc; \
+	&& $(HOME)/.anyenv/libexec/anyenv install pyenv \
+	&& $(HOME)/.anyenv/libexec/anyenv install rbenv \
+	&& $(HOME)/.anyenv/libexec/anyenv install nodenv \
+	&& $(HOME)/.anyenv/libexec/anyenv install phpenv; \
 	fi
 
 anyenv_update: anyenv
