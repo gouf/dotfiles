@@ -44,7 +44,7 @@ composer: php
 
 vim: ruby dotfiles
 	# Vim plugin dep
-	sudo apt install -y vim vim-gtk \
+	sudo apt install -y vim vim-gtk libgnome2-bin\
 	&& sudo gem install flog flay bundler \
 	&& sudo apt install -y ctags
 	## Vim plugin manager
