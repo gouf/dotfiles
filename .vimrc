@@ -206,6 +206,15 @@ let g:quickrun_config.go = {
 \     'exec': '%c run %s'
 \     }
 
+" Ref: https://github.com/pocke/dotfiles/commit/ef7039170cdfe245c9b92c105700652b9e59b299
+let g:quickrun_config = {
+\   '_': {
+\     'runner': 'vimproc',
+\     'runner/vimproc/updatetime': 60,
+\     'tempfile': '%{expand("%:p:h") . "/" . system("echo -n $(uuidgen)")}'
+\   },
+\ }
+
 " Swift quickrun
 let g:quickrun_config['swift'] = {
   \ 'command': 'swift',
@@ -234,9 +243,16 @@ highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_column_always = 1
 
+" Search Tasks
+let g:searchtasks_list=["TODO", "FIXME", "NOTE", "BUG"]
+
+command TodoList SearchTasks ./**
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Plugin 'vim-scripts/todolist.vim'
+  Plugin 'gilsondev/searchtasks.vim'
   Plugin 'StanAngeloff/php.vim'
   Plugin 'Shougo/neosnippet-snippets'
   Plugin 'Shougo/vimproc'
