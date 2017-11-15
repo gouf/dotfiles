@@ -1,7 +1,7 @@
 # first command:
 # sudo apt install -y make curl && curl https://raw.githubusercontent.com/gouf/dotfiles/master/Makefile > Makefile && make
 
-all: apt_update git wget tree ruby php composer vim dotfiles anyenv golang hub bashmarks platinum_searcher heroku docker_ce git_flow postgresql
+all: apt_update git wget tree ruby php composer vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow postgresql
 
 universe:
 	sudo add-apt-repository universe
@@ -135,3 +135,7 @@ git_flow: wget curl
 
 postgresql:
 	sudo apt install -y postgresql
+
+haskell_stack:
+	sudo apt install -y haskell-stack \
+	&& stack setup
