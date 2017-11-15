@@ -96,13 +96,37 @@ let g:vimfiler_as_default_explorer = 1
 let g:cakephp_enable_auto_mode = 1
 
 " vim-quickrun
-let g:quickrun_config={'*': {'split': ''}}
+let g:quickrun_config = {} " Init
+let g:quickrun_config['*'] = {'split': ''}
 
+" Ref: https://github.com/pocke/dotfiles/commit/ef7039170cdfe245c9b92c105700652b9e59b299
+let g:quickrun_config['_'] = {
+\   'runner': 'vimproc',
+\   'runner/vimproc/updatetime': 60,
+\   'tempfile': '%{expand("%:p:h") . "/" . system("echo -n $(uuidgen)")}'
+\ }
+
+let g:quickrun_config['go'] = {
+\   'type': 'go',
+\   'command': 'go',
+\   'cmdopt': 'run',
+\   'exec': '%c %o %s'
+\ }
+
+" Swift quickrun
 let g:quickrun_config['swift'] = {
-  \ 'command': 'xcrun',
-  \ 'cmdopt': 'swift',
-  \ 'exec': '%c %o %s',
-  \}
+\ 'command': 'xcrun',
+\ 'cmdopt': 'swift',
+\ 'exec': '%c %o %s',
+\ }
+
+" Haskell quickrun
+let g:quickrun_config['haskell'] = { 'type': 'haskell/stack' }
+let g:quickrun_config['haskell/stack'] = {
+\  'command': 'stack',
+\  'cmdopt': 'runghc',
+\  'exec': '%c %o %s %a'
+\ }
 
 " syntax highlight for jade
 au BufNewFile,BufRead *.jade setf jade
@@ -200,26 +224,6 @@ augroup END
 " Go lang complement
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
-let g:quickrun_config.go = {
-\     'type': 'go',
-\     'command': 'go',
-\     'exec': '%c run %s'
-\     }
-
-" Ref: https://github.com/pocke/dotfiles/commit/ef7039170cdfe245c9b92c105700652b9e59b299
-let g:quickrun_config = {
-\   '_': {
-\     'runner': 'vimproc',
-\     'runner/vimproc/updatetime': 60,
-\     'tempfile': '%{expand("%:p:h") . "/" . system("echo -n $(uuidgen)")}'
-\   },
-\ }
-
-" Swift quickrun
-let g:quickrun_config['swift'] = {
-  \ 'command': 'swift',
-  \ 'exec': '%c %o %s',
-  \}
 " indent guides
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=darkgrey
