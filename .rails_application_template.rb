@@ -10,9 +10,9 @@ gem 'slim-rails'
 gem 'rails_safe_tasks'
 gem 'nprogress-rails'
 
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 gem_group :development do
   gem 'rubocop', require: false
