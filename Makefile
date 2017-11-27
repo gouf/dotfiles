@@ -13,6 +13,11 @@ apt_update:
 git:
 	sudo apt install -y git
 
+git_completion:
+	cd /etc/bash_completion.d \
+	&& sudo wget https://github.com/git/git/raw/master/contrib/completion/git-completion.bash \
+	&& sudo wget https://github.com/git/git/raw/master/contrib/completion/git-prompt.sh
+
 wget:
 	sudo apt install -y wget
 
