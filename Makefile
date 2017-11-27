@@ -138,7 +138,8 @@ git_flow: wget curl
 	&& rm -f gitflow-installer.sh \
 	&& rm -rf gitflow
 	## git-flow bash completion
-	sudo wget https://github.com/bobthecow/git-flow-completion/raw/master/git-flow-completion.bash
+	cd /etc/bash_completion.d \
+	&& sudo wget https://github.com/bobthecow/git-flow-completion/raw/master/git-flow-completion.bash
 
 postgresql:
 	sudo apt install -y postgresql
