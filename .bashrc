@@ -178,13 +178,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export PATH="$HOME/.composer:$PATH"
-
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/golang
 export PATH=$GOPATH/bin:$PATH
-
-export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 export PATH="~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH"
 export PATH="~/.terraform:$PATH"
@@ -286,3 +282,5 @@ fi
 if [ -f ~/.homebrew_github_api_token ]; then
   source ~/.homebrew_github_api_token
 fi
+
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
