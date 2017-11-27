@@ -255,6 +255,15 @@ function init_plane_java_project() {
   gradle init
 }
 
+function wp_install () {
+  wp core download --path=$1;
+  cd $1;
+  read -p 'name the database:' dbname;
+  wp config create --dbname=$dbname --dbuser=root --dbpass=root --dbhost=localhost;
+  wp db create;
+  wp core install --prompt
+}
+
 export ANDROID_HOME="/usr/local/Cellar/android-sdk/24.4.1_1/"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
