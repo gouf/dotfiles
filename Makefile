@@ -1,7 +1,7 @@
 # first command:
 # sudo apt install -y make curl && curl https://raw.githubusercontent.com/gouf/dotfiles/master/Makefile > Makefile && make
 
-all: apt_update git wget tree ruby php composer vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow postgresql
+all: apt_update git wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
 
 universe:
 	sudo add-apt-repository universe
