@@ -31,9 +31,9 @@ ruby: apt_update
 	sudo apt install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs ruby-dev \
 	&& sudo apt install -y ruby
 
-php:
+php: mysql
 	# (Not work perfectly after installation. maybe not enough list of dependencies)
-	sudo apt install -y php php-xdebug bison re2c bzip2
+	sudo apt install -y php php-xdebug bison re2c bzip2 php-mysql
 
 composer: php
 	# Composer
@@ -148,6 +148,9 @@ git_flow: wget curl
 
 postgresql:
 	sudo apt install -y postgresql
+
+mysql:
+	sudo apt install -y mysql-server mysql-client
 
 haskell_stack:
 	sudo apt install -y haskell-stack \
