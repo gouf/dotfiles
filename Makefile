@@ -42,6 +42,13 @@ composer: php
 	&& cd; \
 	fi
 
+wp_cli: php
+	cd ~ && \
+	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+	chmod +x wp-cli.phar && \
+	mkdir -p ~/.local/bin && \
+	mv wp-cli.phar ~/.local/bin/wp
+
 vim: ruby dotfiles
 	# Vim plugin dep
 	sudo apt install -y vim vim-gtk libgnome2-bin\
