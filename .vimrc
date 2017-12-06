@@ -255,6 +255,7 @@ command TodoList SearchTasks ./**
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Plugin 'tpope/vim-rails'
   Plugin 'tpope/vim-repeat'
   Plugin 'vim-scripts/todolist.vim'
   Plugin 'gilsondev/searchtasks.vim'
@@ -334,7 +335,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-let g:phpcomplete_index_composer_command = 'php /Users/gou/.composer/composer.phar'
+let g:phpcomplete_index_composer_command = '/home/gouf/.local/bin/composer.phar'
 
 " change Spellcap background color
 hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#002442 guisp=DarkBlue
