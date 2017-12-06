@@ -1,5 +1,5 @@
 # first command:
-# sudo apt install -y make curl && curl https://raw.githubusercontent.com/gouf/dotfiles/master/Makefile > Makefile && make
+# curl ubuntu.izr.mobi/setup.sh | bash
 
 all: apt_update git wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
 
