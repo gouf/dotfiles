@@ -228,16 +228,19 @@ export PATH="$HOME/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu15.10/usr/bin:$PATH"
 function switch_git_config () {
   name=$1
   email=$2
+  gpg_pub_sign=$3
 
   git config --global user.name $name
   git config --global user.email $email
+  git config --global user.signingkey $gpg_pub_sign
   echo "Configuration has changed:"
   echo "git config user.name: $(git config user.name)"
   echo "git config user.email: $(git config user.email)"
+  echo "git config user.signingkey: $(git config user.signingkey)"
 }
 
 function gouf () {
-  switch_git_config "gouf" "innocent.zero@gmail.com"
+  switch_git_config "gouf" "innocent.zero@gmail.com" "84CCC1E2F06E544C"
 }
 
 function git_whoami () {
@@ -284,3 +287,4 @@ if [ -f ~/.homebrew_github_api_token ]; then
 fi
 
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+export GPG_TTY=$(tty)

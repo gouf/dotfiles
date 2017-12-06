@@ -1,6 +1,7 @@
 [user]
   name = gouf
   email = innocent.zero@gmail.com
+  signingkey = 84CCC1E2F06E544C
 [color]
   ui = auto
 [color "status"]
@@ -14,7 +15,7 @@
   editor = vim
 [alias]
   st = status
-  co = commit
+  co = commit -sS
   ch = checkout
   br = branch
   df = diff --ignore-space-at-eol --color-words
