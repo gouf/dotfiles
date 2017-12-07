@@ -27,9 +27,6 @@ git_crypt: git
 wget:
 	sudo apt install -y wget
 
-curl:
-	sudo apt install -y curl
-
 tree: universe
 	sudo apt install -y tree
 
@@ -141,7 +138,7 @@ docker_ce:
 	sudo groupadd docker \
 	&& sudo gpasswd -a $(USER) docker
 
-git_flow: wget curl
+git_flow: wget
 	cd \
 	&& curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh \
 	&& chmod +x gitflow-installer.sh \
