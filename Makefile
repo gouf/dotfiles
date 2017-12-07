@@ -1,7 +1,7 @@
 # first command:
 # sudo apt install -y curl && curl ubuntu.izr.mobi/setup.sh | bash
 
-all: apt_update git git_crypt wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
+all: apt_update apt_upgrade git git_crypt wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
 
 universe:
 	sudo add-apt-repository universe
@@ -9,6 +9,9 @@ universe:
 
 apt_update:
 	sudo apt update
+
+apt_upgrade:
+	sudo apt upgrade -y
 
 git:
 	sudo apt install -y git
