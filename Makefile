@@ -135,8 +135,10 @@ docker_ce:
 	&& sudo apt update \
 	&& sudo apt install docker \
 	## docker gets control without sudo
+	if [ -z '$(shell groups "$$(whoami)" | grep docker)' ]; then \
 	sudo groupadd docker \
-	&& sudo gpasswd -a $(USER) docker
+	&& sudo gpasswd -a $(USER) docker; \
+	fi
 
 git_flow: wget
 	cd \
