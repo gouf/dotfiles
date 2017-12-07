@@ -28,7 +28,7 @@ wget:
 	sudo apt install -y wget
 
 curl:
-	suto apt install -y curl
+	sudo apt install -y curl
 
 tree: universe
 	sudo apt install -y tree
