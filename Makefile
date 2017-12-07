@@ -1,5 +1,5 @@
 # first command:
-# curl ubuntu.izr.mobi/setup.sh | bash
+# sudo apt install -y curl && curl ubuntu.izr.mobi/setup.sh | bash
 
 all: apt_update git git_crypt wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
 
