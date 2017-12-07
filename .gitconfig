@@ -15,7 +15,7 @@
   editor = vim
 [alias]
   st = status
-  co = commit -sS
+  co = commit -S
   ch = checkout
   br = branch
   df = diff --ignore-space-at-eol --color-words
