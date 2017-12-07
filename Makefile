@@ -1,7 +1,7 @@
 # first command:
 # curl ubuntu.izr.mobi/setup.sh | bash
 
-all: apt_update git wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
+all: apt_update git git_crypt wget tree ruby php composer wp_cli vim dotfiles anyenv golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
 
 universe:
 	sudo add-apt-repository universe
@@ -17,6 +17,9 @@ git_completion:
 	cd /etc/bash_completion.d \
 	&& sudo wget https://github.com/git/git/raw/master/contrib/completion/git-completion.bash \
 	&& sudo wget https://github.com/git/git/raw/master/contrib/completion/git-prompt.sh
+
+git_crypt: git
+	sudo apt install -y git-crypt
 
 wget:
 	sudo apt install -y wget
