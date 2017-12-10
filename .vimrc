@@ -252,9 +252,15 @@ let g:searchtasks_list=["TODO", "FIXME", "NOTE", "BUG"]
 
 command TodoList SearchTasks ./**
 
+" operator-flashy
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Plugin 'kana/vim-operator-user'
+  Plugin 'haya14busa/vim-operator-flashy'
   Plugin 'tpope/vim-rails'
   Plugin 'tpope/vim-repeat'
   Plugin 'vim-scripts/todolist.vim'
