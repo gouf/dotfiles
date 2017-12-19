@@ -91,6 +91,12 @@ anyenv: git
 	&& $(HOME)/.anyenv/libexec/anyenv install phpenv; \
 	fi
 
+rbenv_each: anyenv
+	if [ ! -e "$(rbenv root)"/plugins/rbenv-each ]; then \
+	mkdir -p "$(rbenv root)"/plugins \
+	&& git clone https://github.com/rbenv/rbenv-each.git "$(rbenv root)"/plugins/rbenv-each; \
+	fi
+
 anyenv_update: anyenv
 	## anyenv update
 	if [ ! -e ~/.anyenv/plugins/anyenv-update ]; then \
