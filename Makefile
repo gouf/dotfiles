@@ -104,6 +104,13 @@ anyenv_update: anyenv
 	&& git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update; \
 	fi
 
+phpenv_completion: anyenv
+	if [ ! -e /etc/bash_completion.d/phpenv.bash ]; then \
+	cd /etc/bash_completion.d \
+	&& sudo wget https://github.com/phpenv/phpenv/raw/dev/completions/phpenv.bash; \
+	&& source /etc/bash_completion.d/phpenv.bash
+	fi
+
 golang:
 	sudo apt install -y golang
 
