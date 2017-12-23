@@ -288,3 +288,10 @@ fi
 
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export GPG_TTY=$(tty)
+export PATH="$PATH:/usr/lib/go-1.9/bin"
+
+eval "$(pipenv --completion)"
+
+function github_today () {
+  git compare $(git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author="$(git config --get user.name)"|(head -n 1;tail -n 1)|cut -d\  -f 1|sed 'N;s/\n/\.\.\./' -)
+}
