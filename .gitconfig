@@ -21,6 +21,7 @@
   df = diff --ignore-space-at-eol --color-words
   dfs = diff --ignore-space-at-eol --color-words --staged
   dc = diff --cached
+  lgp = log --show-signature -1
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
