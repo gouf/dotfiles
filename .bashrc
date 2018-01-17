@@ -12,16 +12,6 @@ if [[ $(uname -s) -eq 'Darwin' ]]; then
   export LSCOLORS=gxfxcxdxbxegedabagacad
 fi
 
-# List of Makefile targets
-function print_make_targets() { cat Makefile|egrep "^.+: ?+"|egrep "^[a-z_]+:"|cut -d: -f1 ; }
-
-# Git Ignore Request
-function gi() { curl -s https://www.gitignore.io/api/$@ ; }
-
-# License file
-# apache, artistic, cc0, eclipse, affero, gpl2, gpl3, lgpl2, lgpl3, isc, mit, mozilla, nbsd, unlicense, sbsd
-function li() { curl -s https://licensedownload.herokuapp.com/$@ ; }
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 # HISTCONTROL=ignoreboth
@@ -99,6 +89,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# functions type commands
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -122,38 +117,11 @@ fi
 export PATH=~/.local/bin:$PATH
 eval "$(hub alias -s)"
 
-# Print some docker containers IP address
-function printip {
- id="$*" # container id
- sudo docker container inspect $id |grep IPAddress|sed -e "s/^[ \t ]*\"IPAddress\":\s\"//g"|sed -e "s/\",$//g"
-}
-
-function mkcd {
- dir="$*";
- mkdir -p "$dir" && cd "$dir";
-}
-
-function mvcd {
-  file_name="$1";
-  file_path="$2";
-
-  if [ $# -gt 2 ]; then
-    echo 'Err: the parameter is too much.';
-    return 1;
-  fi
-  mv "$file_name" "$file_path" && cd "$file_path";
-}
-
 if [ $(uname -s) == "Darwin" ]; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
-
-# Rails i18n locale xx.yml
-function lo() { curl -s https://cdn.rawgit.com/svenfuchs/rails-i18n/master/rails/locale//$@.yml ;}
-
-function heroku_app_name() { git remote -v| grep heroku | head -n 1 | egrep -o "\w+-\w+-[0-9]+"; }
 
 if [ -f $HOME/git-prompt.sh ]; then
   source $HOME/git-prompt.sh
@@ -193,28 +161,6 @@ PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-function gitsb {
-  exp="$*";
-
-  git br|egrep $exp|cut -c 3-100|xargs git show-branch
-
-}
-
-function update_terraform {
-  ARCH=linux_amd64
-  VERSION=$(terraform version | tail -n 1 | cut -c 4-8)
-
-  URL="https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_${ARCH}.zip"
-
-  if [[ -z "$VERSION" ]]; then
-    echo "Nothing to do."
-  else
-    cd /tmp
-    wget $URL
-    unzip terraform_${VERSION}_${ARCH}.zip -d ~/.terraform
-  fi
-}
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -224,44 +170,6 @@ export PATH="$HOME/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu15.10/usr/bin:$PATH"
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-function switch_git_config () {
-  name=$1
-  email=$2
-  gpg_pub_sign=$3
-
-  git config --global user.name $name
-  git config --global user.email $email
-  git config --global user.signingkey $gpg_pub_sign
-  echo "Configuration has changed:"
-  echo "git config user.name: $(git config user.name)"
-  echo "git config user.email: $(git config user.email)"
-  echo "git config user.signingkey: $(git config user.signingkey)"
-}
-
-function gouf () {
-  switch_git_config "gouf" "innocent.zero@gmail.com" "84CCC1E2F06E544C"
-}
-
-function git_whoami () {
-  git config user.name
-  git config user.email
-}
-
-function init_plane_java_project() {
-  mkdir -p src/{main,test}/{resorces,java}
-  touch src/{main,test}/{resorces,java}/.gitkeep
-  gradle init
-}
-
-function wp_install () {
-  wp core download --path=$1;
-  cd $1;
-  read -p 'name the database:' dbname;
-  wp config create --dbname=$dbname --dbuser=root --dbpass=root --dbhost=localhost;
-  wp db create;
-  wp core install --prompt
-}
 
 export ANDROID_HOME="/usr/local/Cellar/android-sdk/24.4.1_1/"
 
@@ -291,19 +199,3 @@ export GPG_TTY=$(tty)
 export PATH="$PATH:/usr/lib/go-1.9/bin"
 
 eval "$(pipenv --completion)"
-
-function github_today () {
-  git compare $(git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author="$(git config --get user.name)"|(head -n 1;tail -n 1)|cut -d\  -f 1|sed 'N;s/\n/\.\.\./' -)
-}
-
-function init_tachikoma_ruby () {
-  echo 'strategy: 'bundler'' > .tachikoma.yml
-}
-
-function ctags_javascript () {
-  ctags -R --languages=javascript --exclude=.git --exclude=log .
-}
-
-function ctags_ruby () {
-  ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
-}
