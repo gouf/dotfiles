@@ -77,6 +77,7 @@ dotfiles: git
 	&& rm -f ~/.bashrc ~/.bash_profile \
 	&& ln -s $(HOME)/.dotfiles/.bashrc ~/.bashrc \
 	&& ln -s $(HOME)/.dotfiles/.bash_aliases ~/.bash_aliases \
+	&& ln -s $(HOME)/.dotfiles/.bash_functions ~/.bash_functions \
 	&& ln -s $(HOME)/.dotfiles/.gitconfig ~/.gitconfig \
 	&& ln -s $(HOME)/.dotfiles/.railsrc ~/.railsrc \
 	&& ln -s $(HOME)/.dotfiles/.vimrc ~/.vimrc; \
