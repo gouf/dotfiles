@@ -31,6 +31,7 @@
   sta = stash
   patch = diff --no-prefix --no-color
   today = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author=\"`git config --get user.name`\"'"
+  pushall = push --tags --recurse-submodules=on-demand
 
 [filter "lfs"]
   required = true
