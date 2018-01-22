@@ -110,3 +110,7 @@ function ctags_javascript () {
 function ctags_ruby () {
   ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 }
+
+function weather() {
+  curl "http://wttr.in/$1?lang=ja"
+}
