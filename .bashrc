@@ -135,7 +135,6 @@ eval "$(anyenv init -)"
 export EDITOR="vim"
 export MAKE_OPTS=-j4
 
-source ~/.anyenv/envs/phpenv/completions/rbenv.bash
 source ~/.anyenv/completions/anyenv.bash
 
 ### Added by the Heroku Toolbelt
