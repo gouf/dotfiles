@@ -81,6 +81,7 @@ dotfiles: git
 	&& ln -s $(HOME)/.dotfiles/.gitconfig ~/.gitconfig \
 	&& ln -s $(HOME)/.dotfiles/.railsrc ~/.railsrc \
 	&& ln -s $(HOME)/.dotfiles/.vimrc ~/.vimrc; \
+	&& ln -s $(HOME)/.dotfiles/.inputrc ~/.inputrc; \
 	fi
 
 anyenv: git
