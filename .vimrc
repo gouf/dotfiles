@@ -1,4 +1,6 @@
-version 7.4
+version 8.0
+let skip_defaults_vim=1
+set viminfo=""
 set titlestring=vim
 set t_Co=256
 set nocp
@@ -252,6 +254,13 @@ let g:searchtasks_list=["TODO", "FIXME", "NOTE", "BUG"]
 
 command TodoList SearchTasks ./**
 
+" vim-matchup
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_timeout = 30
+let g:matchup_matchparen_insert_timeout = 60
+let g:matchparen_matchparen_deferred_show_time = 50
+let g:matchparen_matchparen_deferred_hide_time = 200
+
 " operator-flashy
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
@@ -311,7 +320,6 @@ call vundle#begin()
   Plugin 'vim-scripts/Zen-Color-Scheme'
   Plugin 'kana/vim-smartinput'
   Plugin 'jiangmiao/auto-pairs'
-  Plugin 'vim-scripts/matchit.zip'
   Plugin 'rizzatti/funcoo.vim'
   Plugin 'rizzatti/dash.vim'
   Plugin 'osyo-manga/vim-over'
@@ -320,7 +328,7 @@ call vundle#begin()
   Plugin 'toyamarinyon/vim-swift'
   Plugin 'tpope/vim-endwise'
   Plugin 'ngmy/vim-rubocop'
-  Plugin 'vim-scripts/ruby-matchit'
+  Plugin 'andymass/vim-matchup'
   Plugin 'w0rp/ale'
   " Color Scheme
   Plugin 'nanotech/jellybeans.vim'
