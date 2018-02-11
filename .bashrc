@@ -198,3 +198,6 @@ export GPG_TTY=$(tty)
 export PATH="$PATH:/usr/lib/go-1.9/bin"
 
 eval "$(pipenv --completion)"
+
+# heroku autocomplete setup
+CLI_ENGINE_AC_BASH_SETUP_PATH=$HOME/.cache/heroku/completions/bash_setup && test -f $CLI_ENGINE_AC_BASH_SETUP_PATH && source $CLI_ENGINE_AC_BASH_SETUP_PATH;
