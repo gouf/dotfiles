@@ -60,9 +60,14 @@ after_bundle do
   # nprogress
   run 'echo "//= require nprogress" >> app/assets/javascripts/application.js'
   run 'echo "//= require nprogress-turbolinks" >> app/assets/javascripts/application.js'
-  run 'echo "/*" >> app/assets/stylesheets/application.css'
-  run 'echo " *= require nprogress" >> app/assets/stylesheets/application.css'
-  run 'echo " */" >> app/assets/stylesheets/application.css'
+  run 'echo "/*" >> app/assets/stylesheets/application.scss'
+  run 'echo " *= require nprogress" >> app/assets/stylesheets/application.scss'
+  run 'echo " */" >> app/assets/stylesheets/application.scss'
+
+  # bootstrap
+  run %(echo "@import 'bootstrap';" >> app/assets/stylesheets/application.scss)
+  run %(echo "//= require popper" >> app/assets/javascripts/application.js)
+  run %(echo "//= require bootstrap-sprockets" >> app/assets/javascripts/application.js)
 
   # rubocop
   run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
