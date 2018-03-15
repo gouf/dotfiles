@@ -12,7 +12,7 @@ gem 'nprogress-rails'
 
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap'
 gem 'freeezer'
 
 gem_group :development do
