@@ -1,7 +1,9 @@
 # first command:
 # sudo apt install -y curl && curl ubuntu.izr.mobi/setup.sh | bash
 
-all: apt_update apt_upgrade git git_crypt wget tree ruby php composer wp_cli vim dotfiles anyenv rbenv_each phpenv_completion golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
+# Note: It works only Ubuntu environment.
+
+all: apt_update apt_upgrade git git_crypt wget tree ruby ruby_gems php composer wp_cli vim dotfiles anyenv rbenv_each phpenv_completion golang hub bashmarks platinum_searcher haskell_stack heroku docker_ce git_flow git_completion postgresql
 
 universe:
 	sudo add-apt-repository universe
@@ -33,6 +35,9 @@ tree: universe
 ruby: apt_update
 	sudo apt install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs ruby-dev \
 	&& sudo apt install -y ruby
+
+ruby_gems: ruby
+	gem install reditor
 
 php: mysql
 	# (Not work perfectly after installation. maybe not enough list of dependencies)
