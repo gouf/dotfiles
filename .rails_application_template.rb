@@ -80,6 +80,10 @@ after_bundle do
   run "cat Gemfile|ruby -ne 'puts $_ =~ /^(.+coffee-rails.+)$/ ? \"# \#{$1}\" : $_' > out"
   run 'mv out Gemfile'
 
+  # Add bullet gem configure
+  run %(head config/environments/development.rb -n -1 > config/environments/tmp && mv config/environments/tmp config/environments/development.rb) # remove last line
+  run %(wget https://raw.githubusercontent.com/gouf/dotfiles/master/.bullet_config -O - >> config/environments/development.rb)
+
   # git
   git :init
   git add: '.'
