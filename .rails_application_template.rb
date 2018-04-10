@@ -31,21 +31,17 @@ gem_group :development do
   gem 'rack-mini-profiler', require: false
 end
 
-gem_group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'fuubar'
-  gem 'timecop'
-  gem 'mutant-rspec'
-end
-
 gem_group :test do
-  gem 'timecop'
-  gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'fuubar'
   gem 'launchy'
+  gem 'mutant-rspec'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'timecop'
 end
 
 # works on Rails 4.2(?) or later
