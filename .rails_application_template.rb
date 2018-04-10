@@ -28,7 +28,7 @@ gem_group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'rack-runtime'
+  gem 'rack-mini-profiler', require: false
 end
 
 gem_group :development, :test do
@@ -83,6 +83,9 @@ after_bundle do
   # Add bullet gem configure
   run %(head config/environments/development.rb -n -1 > config/environments/tmp && mv config/environments/tmp config/environments/development.rb) # remove last line
   run %(wget https://raw.githubusercontent.com/gouf/dotfiles/master/.bullet_config -O - >> config/environments/development.rb)
+
+  # Init rack-runtime
+  run %(bundle exec rails g rack_profiler:install)
 
   # git
   git :init
