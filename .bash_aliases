@@ -1,3 +1,5 @@
+# eg. retab spaces_and_tabs_mixture_indented.txt
+alias retab='vim -s <(echo -e "gg=G\n:retab\n:wqa")'
 alias less="less -R"
 alias grep="grep --color"
 # some more ls aliases
