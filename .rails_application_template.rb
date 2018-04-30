@@ -51,6 +51,7 @@ after_bundle do
   # RSpec
   run 'bundle exec guard init rspec'
   run 'bundle exec guard init rubocop'
+  run %(yes | bundle exec rails generate rspec:install)
   run 'echo "--format Fuubar" >> .rspec'
 
   # nprogress
