@@ -48,12 +48,6 @@ end
 after_bundle do
   run 'curl https://www.gitignore.io/api/vim,rails,node > .gitignore'
 
-  # RSpec
-  run 'bundle exec guard init rspec'
-  run 'bundle exec guard init rubocop'
-  run %(yes | bundle exec rails generate rspec:install)
-  run 'echo "--format Fuubar" >> .rspec'
-
   # nprogress
   run 'echo "//= require nprogress" >> app/assets/javascripts/application.js'
   run 'echo "//= require nprogress-turbolinks" >> app/assets/javascripts/application.js'
@@ -66,13 +60,6 @@ after_bundle do
   run %(echo "//= require popper" >> app/assets/javascripts/application.js)
   run %(echo "//= require bootstrap-sprockets" >> app/assets/javascripts/application.js)
 
-  # rubocop
-  run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
-  run 'bundle exec rubocop --auto-correct'
-  run 'bundle exec rubocop --auto-gen-config'
-  run 'echo "inherit_from:" >> .rubocop.yml'
-  run 'echo "  - .rubocop_todo.yml" >> .rubocop.yml'
-
   # Disable coffee-rails gem
   run "cat Gemfile|ruby -ne 'puts $_ =~ /^(.+coffee-rails.+)$/ ? \"# \#{$1}\" : $_' > out"
   run 'mv out Gemfile'
@@ -83,6 +70,19 @@ after_bundle do
 
   # Init rack-runtime
   run %(bundle exec rails g rack_profiler:install)
+
+  # RSpec
+  run 'bundle exec guard init rspec'
+  run 'bundle exec guard init rubocop'
+  run %(yes | bundle exec rails generate rspec:install)
+  run 'echo "--format Fuubar" >> .rspec'
+
+  # rubocop
+  run 'curl -L https://github.com/gouf/dotfiles/raw/master/.rubocop.yml > .rubocop.yml'
+  run 'bundle exec rubocop --auto-correct'
+  run 'bundle exec rubocop --auto-gen-config'
+  run 'echo "inherit_from:" >> .rubocop.yml'
+  run 'echo "  - .rubocop_todo.yml" >> .rubocop.yml'
 
   # git
   git :init
