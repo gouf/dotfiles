@@ -238,12 +238,6 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
-" vim-flay
-" let g:flay_on_open=0
-" let g:flay_on_save=1
-" let g:flay_minimum_mass=10
-" let g:flay_piet_text="✗"
-
 " Ale (Lint Engine)
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -280,7 +274,6 @@ call vundle#begin()
   Plugin 'Shougo/vimproc'
   Plugin 'majutsushi/tagbar'
   Plugin 'm2mdas/phpcomplete-extended'
-  Plugin 'prophittcorey/vim-flay'
   Plugin 'hotwatermorning/auto-git-diff'
   Plugin 'triglav/vim-visual-increment'
   Plugin 'nvie/vim-flake8'
