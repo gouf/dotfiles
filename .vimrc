@@ -262,6 +262,7 @@ nmap Y <Plug>(operator-flashy)$
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   " Vundle
+  Plugin 'editorconfig/editorconfig-vim'
   Plugin 'mechatroner/rainbow_csv'
   Plugin 'kana/vim-operator-user'
   Plugin 'haya14busa/vim-operator-flashy'
