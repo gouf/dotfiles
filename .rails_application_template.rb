@@ -60,11 +60,6 @@ after_bundle do
   run %(echo "//= require popper" >> app/assets/javascripts/application.js)
   run %(echo "//= require bootstrap-sprockets" >> app/assets/javascripts/application.js)
 
-  # Disable coffee-rails gem
-  run "cat Gemfile|ruby -ne 'puts $_ =~ /^(.+coffee-rails.+)$/ ? \"# \#{$1}\" : $_' > out"
-  run 'mv out Gemfile'
-  run 'bundle' # Update Gemfile.lock
-
   # Add bullet gem configure
   run %(head config/environments/development.rb -n -1 > config/environments/tmp && mv config/environments/tmp config/environments/development.rb) # remove last line
   run %(wget https://raw.githubusercontent.com/gouf/dotfiles/master/.bullet_config -O - >> config/environments/development.rb)

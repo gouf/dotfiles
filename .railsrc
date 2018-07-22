@@ -1,3 +1,4 @@
 --skip-test
+--skip-coffee
 --database=sqlite3
 --template=https://github.com/gouf/dotfiles/raw/master/.rails_application_template.rb
