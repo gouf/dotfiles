@@ -97,7 +97,9 @@ let g:vimfiler_as_default_explorer = 1
 " Cake.vim
 let g:cakephp_enable_auto_mode = 1
 
+"
 " vim-quickrun
+"
 let g:quickrun_config = {} " Init
 let g:quickrun_config['*'] = {'split': ''}
 
@@ -129,6 +131,10 @@ let g:quickrun_config['haskell/stack'] = {
 \  'cmdopt': 'runghc',
 \  'exec': '%c %o %s %a'
 \ }
+
+"
+" Syntax Highlight
+"
 
 " syntax highlight for jade
 au BufNewFile,BufRead *.jade setf jade
@@ -178,7 +184,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+"
 " airline
+"
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#enabled = 0
 
