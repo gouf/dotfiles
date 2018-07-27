@@ -260,85 +260,119 @@ command TodoList SearchTasks ./**
 
 " vim-matchup
 let g:matchup_matchparen_deferred = 1
-let g:matchup_matchparen_timeout = 30
-let g:matchup_matchparen_insert_timeout = 60
-let g:matchparen_matchparen_deferred_show_time = 50
-let g:matchparen_matchparen_deferred_hide_time = 200
+let g:matchup_matchparen_timeout = 10
+let g:matchup_matchparen_insert_timeout = 30
+let g:matchparen_matchparen_deferred_show_time = 20
+let g:matchparen_matchparen_deferred_hide_time = 100
 
-" operator-flashy
+" operator-flashy (yank to blink)
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-  " Vundle
-  Plugin '2072/PHP-Indenting-for-VIm'
-  Plugin 'Shougo/neocomplcache'
-  Plugin 'Shougo/neosnippet-snippets'
-  Plugin 'Shougo/neosnippet.vim'
-  Plugin 'Shougo/unite.vim'
-  Plugin 'Shougo/vimfiler'
-  Plugin 'Shougo/vimproc'
-  Plugin 'Shutnik/jshint2.vim'
-  Plugin 'StanAngeloff/php.vim'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'alpaca-tc/alpaca_tags'
-  Plugin 'andymass/vim-matchup'
-  Plugin 'ap/vim-css-color'
-  Plugin 'bling/vim-airline'
-  Plugin 'digitaltoad/vim-jade'
-  Plugin 'ecomba/vim-ruby-refactoring'
-  Plugin 'editorconfig/editorconfig-vim'
-  Plugin 'ekalinin/Dockerfile.vim'
-  Plugin 'elixir-lang/vim-elixir'
-  Plugin 'fatih/vim-go'
-  Plugin 'gilsondev/searchtasks.vim'
-  Plugin 'gmarik/Vundle.vim'
-  Plugin 'groenewege/vim-less'
-  Plugin 'haya14busa/vim-operator-flashy'
-  Plugin 'hotwatermorning/auto-git-diff'
-  Plugin 'jiangmiao/auto-pairs'
-  Plugin 'kana/vim-operator-user'
-  Plugin 'kana/vim-smartinput'
-  Plugin 'kannokanno/previm'
-  Plugin 'kchmck/vim-coffee-script'
-  Plugin 'm2mdas/phpcomplete-extended'
-  Plugin 'majutsushi/tagbar'
-  Plugin 'mattn/emmet-vim'
-  Plugin 'mechatroner/rainbow_csv'
-  Plugin 'mxw/vim-jsx'
-  Plugin 'nathanaelkane/vim-indent-guides'
-  Plugin 'ngmy/vim-rubocop'
-  Plugin 'nvie/vim-flake8'
-  Plugin 'osyo-manga/vim-over'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'rhysd/vim-crystal'
-  Plugin 'rizzatti/dash.vim'
-  Plugin 'rizzatti/funcoo.vim'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'slim-template/vim-slim'
-  Plugin 'thinca/vim-quickrun'
-  Plugin 'toyamarinyon/vim-swift'
-  Plugin 'tpope/vim-endwise'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-pathogen'
-  Plugin 'tpope/vim-rails'
-  Plugin 'tpope/vim-repeat'
-  Plugin 'tpope/vim-surround'
-  Plugin 'triglav/vim-visual-increment'
-  Plugin 'vim-jp/vim-go-extra'
-  Plugin 'vim-scripts/AnsiEsc.vim'
-  Plugin 'vim-scripts/Highlight-UnMatched-Brackets'
-  Plugin 'vim-scripts/Zen-Color-Scheme'
-  Plugin 'vim-scripts/dbext.vim'
-  Plugin 'vim-scripts/less-syntax'
-  Plugin 'vim-scripts/todolist.vim'
-  Plugin 'w0rp/ale'
-  Plugin 'xolox/vim-easytags'
-  Plugin 'xolox/vim-misc'
+"
+" dein
+"
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/home/gouf/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/home/gouf/.cache/dein')
+  call dein#begin('/home/gouf/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/gouf/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  " call dein#add('Shougo/neosnippet.vim')
+  " call dein#add('Shougo/neosnippet-snippets')
+
+  " You can specify revision/branch/tag.
+  " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+
+  call dein#add('2072/PHP-Indenting-for-VIm')
+  call dein#add('Shougo/neocomplcache')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/vimfiler')
+  call dein#add('Shougo/vimproc')
+  call dein#add('Shutnik/jshint2.vim')
+  call dein#add('StanAngeloff/php.vim')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('alpaca-tc/alpaca_tags')
+  call dein#add('andymass/vim-matchup')
+  call dein#add('ap/vim-css-color')
+  call dein#add('bling/vim-airline')
+  call dein#add('digitaltoad/vim-jade')
+  call dein#add('ecomba/vim-ruby-refactoring')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('ekalinin/Dockerfile.vim')
+  call dein#add('elixir-lang/vim-elixir')
+  call dein#add('fatih/vim-go')
+  call dein#add('gilsondev/searchtasks.vim')
+  call dein#add('groenewege/vim-less')
+  call dein#add('haya14busa/vim-operator-flashy')
+  call dein#add('hotwatermorning/auto-git-diff')
+  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('kana/vim-operator-user')
+  call dein#add('kana/vim-smartinput')
+  call dein#add('kannokanno/previm')
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('m2mdas/phpcomplete-extended')
+  call dein#add('majutsushi/tagbar')
+  call dein#add('mattn/emmet-vim')
+  call dein#add('mechatroner/rainbow_csv')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('ngmy/vim-rubocop')
+  call dein#add('nvie/vim-flake8')
+  call dein#add('osyo-manga/vim-over')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('rhysd/vim-crystal')
+  call dein#add('rizzatti/dash.vim')
+  call dein#add('rizzatti/funcoo.vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('slim-template/vim-slim')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('toyamarinyon/vim-swift')
+  call dein#add('tpope/vim-endwise')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-pathogen')
+  call dein#add('tpope/vim-rails')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('tpope/vim-surround')
+  call dein#add('triglav/vim-visual-increment')
+  call dein#add('vim-jp/vim-go-extra')
+  call dein#add('vim-scripts/AnsiEsc.vim')
+  call dein#add('vim-scripts/Highlight-UnMatched-Brackets')
+  call dein#add('vim-scripts/Zen-Color-Scheme')
+  call dein#add('vim-scripts/dbext.vim')
+  call dein#add('vim-scripts/less-syntax')
+  call dein#add('vim-scripts/todolist.vim')
+  call dein#add('w0rp/ale')
+  call dein#add('xolox/vim-easytags')
+  call dein#add('xolox/vim-misc')
   " Color Scheme
-  Plugin 'nanotech/jellybeans.vim'
-call vundle#end()
+  call dein#add('nanotech/jellybeans.vim')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
 "colorscheme desert
 colorscheme jellybeans
