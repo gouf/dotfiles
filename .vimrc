@@ -107,6 +107,16 @@ let g:cakephp_enable_auto_mode = 1
 let g:quickrun_config = {} " Init
 let g:quickrun_config['*'] = {'split': ''}
 
+"
+" pt integration
+"
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 " Ref: https://github.com/pocke/dotfiles/commit/ef7039170cdfe245c9b92c105700652b9e59b299
 let g:quickrun_config['_'] = {
 \   'runner': 'vimproc',
