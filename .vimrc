@@ -147,6 +147,8 @@ au BufRead,BufNewFile *.json set filetype=json
 " syntax highlight for textlint
 au BufRead,BufNewFile .textlintrc set filetype=json
 
+" syntax highlight for slim
+autocmd BufNewFile,BufRead *.slim set filetype=slim
 
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -219,10 +221,6 @@ let g:airline_section_b =
         \ '%t%( %M%)'
 
 set laststatus=2
-
-" Enable slim syntax highlight
-" autocmd FileType slim setlocal foldmethod=indent
-autocmd BufNewFile,BufRead *.slim set filetype=slim
 
 " AlpacaTags
 augroup AlpacaTags
