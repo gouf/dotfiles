@@ -262,6 +262,8 @@ augroup END
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_column_always = 1
+let b:ale_fixers = {'ruby': ['rubocop']}
+let g:ale_fix_on_save = 1
 
 " Search Tasks
 let g:searchtasks_list=["TODO", "FIXME", "NOTE", "BUG"]
