@@ -367,6 +367,7 @@ if dein#load_state('/home/gouf/.cache/dein')
   call dein#add('vim-scripts/less-syntax')
   call dein#add('vim-scripts/todolist.vim')
   call dein#add('w0rp/ale')
+  call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('xolox/vim-easytags')
   call dein#add('xolox/vim-misc')
   " Color Scheme
