@@ -114,3 +114,7 @@ function ctags_ruby () {
 function weather() {
   curl "http://wttr.in/$1?lang=ja"
 }
+
+function cheat() {
+  curl "https://cheat.sh/$1"
+}
