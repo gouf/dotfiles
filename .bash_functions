@@ -44,7 +44,7 @@ function gitsb {
 
 function update_terraform {
   ARCH=linux_amd64
-  VERSION=$(terraform version | tail -n 1 | cut -c 4-8)
+  VERSION="$(terraform -v | tail -n 1 | egrep -o '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')"
 
   URL="https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_${ARCH}.zip"
 
