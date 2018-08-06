@@ -1,17 +1,17 @@
 # List of Makefile targets
-function print_make_targets() { cat Makefile|egrep "^.+: ?+"|egrep "^[a-z_]+:"|cut -d: -f1 ; }
+function print_make_targets { cat Makefile|egrep "^.+: ?+"|egrep "^[a-z_]+:"|cut -d: -f1 ; }
 
 # Git Ignore Request
-function gi() { curl -s https://www.gitignore.io/api/$@ ; }
+function gi { curl -s https://www.gitignore.io/api/$@ ; }
 
 # License file
 # apache, artistic, cc0, eclipse, affero, gpl2, gpl3, lgpl2, lgpl3, isc, mit, mozilla, nbsd, unlicense, sbsd
-function li() { curl -s https://licensedownload.herokuapp.com/$@ ; }
+function li { curl -s https://licensedownload.herokuapp.com/$@ ; }
 
 # Rails i18n locale xx.yml
-function lo() { curl -s https://cdn.rawgit.com/svenfuchs/rails-i18n/master/rails/locale//$@.yml ;}
+function lo { curl -s https://cdn.rawgit.com/svenfuchs/rails-i18n/master/rails/locale//$@.yml ;}
 
-function heroku_app_name() { git remote -v| grep heroku | head -n 1 | egrep -o "\w+-\w+-[0-9]+"; }
+function heroku_app_name { git remote -v| grep heroku | head -n 1 | egrep -o "\w+-\w+-[0-9]+"; }
 
 # Print some docker containers IP address
 function printip {
@@ -57,7 +57,7 @@ function update_terraform {
   fi
 }
 
-function switch_git_config () {
+function switch_git_config {
   name=$1
   email=$2
   gpg_pub_sign=$3
@@ -71,22 +71,22 @@ function switch_git_config () {
   echo "git config user.signingkey: $(git config user.signingkey)"
 }
 
-function gouf () {
+function gouf {
   switch_git_config "gouf" "innocent.zero@gmail.com" "84CCC1E2F06E544C"
 }
 
-function git_whoami () {
+function git_whoami {
   git config user.name
   git config user.email
 }
 
-function init_plane_java_project() {
+function init_plane_java_project {
   mkdir -p src/{main,test}/{resorces,java}
   touch src/{main,test}/{resorces,java}/.gitkeep
   gradle init
 }
 
-function wp_install () {
+function wp_install {
   wp core download --path=$1;
   cd $1;
   read -p 'name the database:' dbname;
@@ -95,27 +95,27 @@ function wp_install () {
   wp core install --prompt
 }
 
-function github_today () {
+function github_today {
   hub compare $(git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author="$(git config --get user.name)"|(head -n 1;tail -n 1)|cut -d\  -f 1|sed 'N;s/\n/\.\.\./' -)
 }
 
-function init_tachikoma_ruby () {
+function init_tachikoma_ruby {
   echo 'strategy: 'bundler'' > .tachikoma.yml
 }
 
-function ctags_javascript () {
+function ctags_javascript {
   ctags -R --languages=javascript --exclude=.git --exclude=log .
 }
 
-function ctags_ruby () {
+function ctags_ruby {
   ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
 }
 
-function weather() {
+function weather {
   curl "https://wttr.in/$1?lang=ja"
 }
 
-function cheat() {
+function cheat {
   curl "https://cheat.sh/$1"
 }
 
