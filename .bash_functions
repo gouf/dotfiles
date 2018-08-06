@@ -43,7 +43,7 @@ function gitsb {
 }
 
 function update_terraform {
-  ARCH=linux_amd64
+  ARCH="linux_amd64"
   VERSION="$(terraform -v | tail -n 1 | egrep -o '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')"
 
   URL="https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_${ARCH}.zip"
@@ -52,8 +52,8 @@ function update_terraform {
     echo "Nothing to do."
   else
     cd /tmp
-    wget $URL
-    unzip terraform_${VERSION}_${ARCH}.zip -d ~/.terraform
+    wget "$(URL)"
+    unzip "terraform_$(VERSION)_$(ARCH).zip" -d ~/.terraform
   fi
 }
 
