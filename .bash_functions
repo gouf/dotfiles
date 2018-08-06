@@ -118,3 +118,7 @@ function weather() {
 function cheat() {
   curl "https://cheat.sh/$1"
 }
+
+function list_my_functions {
+  cat ~/.bash_functions|grep function|cut -d\  -f2
+}
