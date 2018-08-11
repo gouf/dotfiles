@@ -29,7 +29,6 @@ set shiftwidth=2
 set expandtab
 set formatoptions-=ro
 set autoindent
-set nocompatible
 set scrolloff=5
 set colorcolumn=120
 set ruler
