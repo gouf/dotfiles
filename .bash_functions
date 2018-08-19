@@ -142,6 +142,10 @@ function cheat {
   curl "https://cheat.sh/$1"
 }
 
+function list_aws_regions {
+  aws ec2 describe-regions | jq '.Regions[].RegionName' | cut -d\" -f2
+}
+
 function list_my_functions {
   cat ~/.bash_functions|grep function|cut -d\  -f2
 }
