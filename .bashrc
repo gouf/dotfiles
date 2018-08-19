@@ -201,3 +201,7 @@ eval "$(pipenv --completion)"
 
 # heroku autocomplete setup
 CLI_ENGINE_AC_BASH_SETUP_PATH=$HOME/.cache/heroku/completions/bash_setup && test -f $CLI_ENGINE_AC_BASH_SETUP_PATH && source $CLI_ENGINE_AC_BASH_SETUP_PATH;
+
+# Overwrite Ctrl-R key map
+bind -x '"\C-r":peco-select-history'
+
