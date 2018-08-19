@@ -202,6 +202,24 @@ eval "$(pipenv --completion)"
 # heroku autocomplete setup
 CLI_ENGINE_AC_BASH_SETUP_PATH=$HOME/.cache/heroku/completions/bash_setup && test -f $CLI_ENGINE_AC_BASH_SETUP_PATH && source $CLI_ENGINE_AC_BASH_SETUP_PATH;
 
+#
+# enhancd settings
+# Ref: https://github.com/b4b4r07/enhancd
+#
+if [ -f ~/.enhancd/init.sh ]; then
+  # export ENHANCD_COMMAND=ecd # Default command modification
+  export ENHANCD_FILTER="$GOBIN/peco"
+  export ENHANCD_DOT_SHOW_FULLPATH=1
+  export ENHANCD_DISABLE_DOT=0 # Default: 0
+  export ENHANCD_DISABLE_HYPHEN=0 # Default: 0
+  export ENHANCD_DISABLE_HOME=0 # Default: 0
+  export ENHANCD_DOT_ARG=".." # Default: "..", If set, that behavior same act as original cd
+  export ENHANCD_HYPHEN_ARG="-" # Default: "-", If set, that behavior same act as original cd
+  export ENHANCD_HOME_ARG="" # Default: ""
+  export ENHANCD_HOOK_AFTER_CD="ls" # Default: ""
+  export ENHANCD_USE_FUZZY_MATCH=1 # Default: 1
+  source ~/.enhancd/init.sh
+fi
+
 # Overwrite Ctrl-R key map
 bind -x '"\C-r":peco-select-history'
-
