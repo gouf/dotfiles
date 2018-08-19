@@ -145,9 +145,10 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/golang
-export PATH=$GOPATH/bin:$PATH
+export GOPATH="$HOME/golang"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOROOT/bin:$PATH"
 
 export PATH="~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH"
 export PATH="~/.terraform:$PATH"
@@ -195,7 +196,6 @@ fi
 
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 export GPG_TTY=$(tty)
-export PATH="$PATH:/usr/lib/go-1.9/bin"
 
 eval "$(pipenv --completion)"
 
