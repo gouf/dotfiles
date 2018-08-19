@@ -42,19 +42,41 @@ function gitsb {
 
 }
 
-function update_terraform {
+function check_home_local_bin {
+  DIR="$(env | sed 's/:/\n/g' | grep '$HOME/.local/bin' | head -n 1)"
+
+  if [[ -z "$DIR" ]]; then
+    echo "Please add '\$HOME/.local/bin' to your \$PATH"
+  else
+    # Nothing to do
+    echo ''
+  fi
+}
+
+function install_terraform {
   ARCH="linux_amd64"
-  VERSION="$(terraform -v | tail -n 1 | egrep -o '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')"
+  VERSION="${1:-0.11.7}"
   FILE_NAME="terraform_${VERSION}_$ARCH.zip"
+  PREVIOUS_WORK_DIR="$(pwd)"
 
   URL="https://releases.hashicorp.com/terraform/$VERSION/$FILE_NAME"
+
+  cd /tmp
+  wget --quiet "$URL" -O "$FILE_NAME"
+  unzip -fq "$FILE_NAME" -d ~/.local/bin
+  cd $PREVIOUS_WORK_DIR
+
+  check_home_local_bin
+}
+
+function update_terraform {
+  # terraform knows own latest version
+  VERSION="$(terraform -v | tail -n 1 | egrep -o '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')"
 
   if [[ -z "$VERSION" ]]; then
     echo "Nothing to do."
   else
-    cd /tmp
-    wget "$URL" -O "$FILE_NAME"
-    unzip "$FILE_NAME" -d ~/.local/bin
+    install_terraform $VERSION
   fi
 }
 
