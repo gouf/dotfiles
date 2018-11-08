@@ -10,15 +10,13 @@ gem 'slim-rails'
 gem 'rails_safe_tasks'
 gem 'nprogress-rails'
 
-gem 'therubyracer'
-gem 'less-rails'
+gem 'less-rails', github: 'MustafaZain/less-rails'
 gem 'bootstrap'
 gem 'freeezer'
 
 gem_group :development do
   gem 'rubocop', require: false
   gem 'guard'
-  gem 'guard-rubocop'
   gem 'guard-rspec'
   gem 'pry-rails'
   gem 'pry-coolline'
@@ -69,7 +67,6 @@ after_bundle do
 
   # RSpec
   run 'bundle exec guard init rspec'
-  run 'bundle exec guard init rubocop'
   run %(yes | bundle exec rails generate rspec:install)
   run 'echo "--format Fuubar" >> .rspec'
 
