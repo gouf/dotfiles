@@ -102,6 +102,12 @@ map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
 
+"
+" easytags
+"
+let g:easytags_async = 1
+let g:easytags_syntax_keyword = 'always'
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -158,6 +164,29 @@ let g:quickrun_config['haskell/stack'] = {
 \  'cmdopt': 'runghc',
 \  'exec': '%c %o %s %a'
 \ }
+
+"
+" Toggle Pane Maximize
+"
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
 
 "
 " Syntax Highlight
@@ -252,7 +281,7 @@ augroup AlpacaTags
     autocmd BufWritePost Gemfile TagsBundle
     autocmd BufEnter * TagsSet
     " 毎回保存と同時更新する場合はコメントを外す
-    " autocmd BufWritePost * TagsUpdate
+    autocmd BufWritePost * TagsUpdate
   endif
 augroup END
 
@@ -271,11 +300,12 @@ augroup PrevimSettings
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
+"
 " Ale (Lint Engine)
+"
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_column_always = 1
-let b:ale_fixers = {'ruby': ['rubocop']}
 let g:ale_fix_on_save = 1
 
 " Search Tasks
@@ -343,6 +373,8 @@ if dein#load_state('/home/gouf/.cache/dein')
   call dein#add('gilsondev/searchtasks.vim')
   call dein#add('groenewege/vim-less')
   call dein#add('hashivim/vim-terraform')
+  call dein#add('haya14busa/incsearch-fuzzy.vim')
+  call dein#add('haya14busa/incsearch.vim')
   call dein#add('haya14busa/vim-operator-flashy')
   call dein#add('hotwatermorning/auto-git-diff')
   call dein#add('jiangmiao/auto-pairs')
@@ -382,11 +414,12 @@ if dein#load_state('/home/gouf/.cache/dein')
   call dein#add('vim-scripts/dbext.vim')
   call dein#add('vim-scripts/less-syntax')
   call dein#add('vim-scripts/todolist.vim')
-  call dein#add('w0rp/ale')
+  "call dein#add('w0rp/ale')
   call dein#add('weirongxu/plantuml-previewer.vim')
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('xolox/vim-easytags')
   call dein#add('xolox/vim-misc')
+  call dein#add('yuttie/comfortable-motion.vim')
   " Color Scheme
   call dein#add('nanotech/jellybeans.vim')
 
@@ -413,12 +446,8 @@ execute pathogen#infect()
 se statusline+=%#warningmsg#
 se statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
 let g:phpcomplete_index_composer_command = '/home/gouf/.local/bin/composer.phar'
 
 " change Spellcap background color
-hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#002442 guisp=DarkBlue
+" hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#002442 guisp=DarkBlue
+hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#3A8A5A guisp=DarkBlue
