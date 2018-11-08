@@ -43,8 +43,8 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 au BufNewFile,BufRead *.php se ft=php
 
 " Ref: https://stackoverflow.com/questions/1416572/vi-vim-restore-opened-files
-map <F2> :source ~/vim_session <cr>     " Quick write session with F3
-map <F3> :mksession! ~/vim_session <cr> " And load session with F2
+map <F2> :source ~/.vim-session <cr>     " Quick write session with F3
+map <F3> :mksession! ~/.vim-session <cr> " And load session with F2
 
 " StanAngeloff/php.vim
 function! PhpSyntaxOverride()
