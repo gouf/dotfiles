@@ -15,7 +15,7 @@ set encoding=utf-8
 set fileformat=unix
 set backspace=2
 set helplang=ja
-set modelines=0
+" set modelines=0 " disable modeline
 set window=0
 set history=1000
 command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))|write %:p
