@@ -143,7 +143,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Load pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 export GOPATH="$HOME/golang"
 export GOBIN="$GOPATH/bin"
@@ -177,7 +176,6 @@ export ANDROID_HOME="/usr/local/Cellar/android-sdk/24.4.1_1/"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 export GRADLE_USER_HOME="/usr/local/opt/gradle/libexec"
 
 export PATH="$HOME/.chefdk/gem/ruby/2.3.0/bin:$PATH"
