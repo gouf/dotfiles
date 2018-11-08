@@ -88,6 +88,20 @@ au BufNewFile,BufRead *.swift se ft=swift
 filetype plugin indent on
 syntax on
 
+"
+" incsearch.vim
+"
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+"
+" incsearch-fuzzy.vim
+"
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
