@@ -10,23 +10,23 @@ gem 'slim-rails'
 gem 'rails_safe_tasks'
 gem 'nprogress-rails'
 
-gem 'less-rails', github: 'MustafaZain/less-rails'
+gem 'less-rails'
 gem 'bootstrap'
 gem 'freeezer'
 
 gem_group :development do
-  gem 'rubocop', require: false
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'pry-rails'
-  gem 'pry-coolline'
-  gem 'pry-byebug'
   gem 'annotate'
-  gem 'squasher'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'pry-byebug'
+  gem 'pry-coolline'
+  gem 'pry-rails'
   gem 'rack-mini-profiler', require: false
+  gem 'rubocop', require: false
+  gem 'squasher'
 end
 
 gem_group :test do
