@@ -34,6 +34,7 @@ set colorcolumn=120
 set ruler
 set list " shows hidden characters as control character
 set completeopt=menu,preview
+set cursorline
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
