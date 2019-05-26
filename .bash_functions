@@ -1,3 +1,5 @@
+function urlencode { ruby -r cgi -e "puts CGI.escape(\""$1"\")" ; }
+
 # bit.ly URL Shortener
 # Dependencies:
 # * BITLY_ACCESS_TOKEN
