@@ -220,4 +220,5 @@ if [ -f ~/.enhancd/init.sh ]; then
 fi
 
 # Overwrite Ctrl-R key map
-bind -x '"\C-r":peco-select-history'
+[[ "$(uname -s)" = 'Linux' ]] && bind -x '"\C-r":peco-select-history-linux'
+[[ "$(uname -s)" = 'Darwin' ]] && bind -x '"\C-r":peco-select-history-mac'

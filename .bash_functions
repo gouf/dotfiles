@@ -173,26 +173,16 @@ function list_my_functions {
   cat ~/.bash_functions|grep function|cut -d\  -f2
 }
 
-# FIXME: peco-* を Linux, Mac 両対応にする
-# 今は Mac で動く記述
-
-# peco-select-history() {
-#   declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
-#   READLINE_LINE="$l"
-#   READLINE_POINT=${#l}
-# }
-
-peco-select-history() {
-    local tac
-    which gtac &> /dev/null && tac="gtac" || \
-        which tac &> /dev/null && tac="tac" || \
-        tac="tail -r"
-    READLINE_LINE=$(HISTTIMEFORMAT= history | $tac | sed -e 's/^\s*[0-9]\+\s\+//' | awk '!a[$0]++' | peco --query "$READLINE_LINE")
-    READLINE_POINT=${#READLINE_LINE}
+# for Linux
+peco-select-history-linux() {
+  declare l=$(HISTTIMEFORMAT= history | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$READLINE_LINE")
+  READLINE_LINE="$l"
+  READLINE_POINT=${#l}
 }
 
+# for Mac
 # Ref: https://qiita.com/yungsang/items/09890a06d204bf398eea
-peco-history() {
+peco-select-history-mac() {
   local NUM=$(history | wc -l)
   local FIRST=$((-1*(NUM-1)))
 
