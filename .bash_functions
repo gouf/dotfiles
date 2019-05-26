@@ -1,3 +1,19 @@
+# bit.ly URL Shortener
+# Dependencies:
+# * BITLY_ACCESS_TOKEN
+# * BITLY_USER_NAME
+# * jq command
+function bitly {
+
+  short_url=$(curl -s --request GET \
+    --url "https://api-ssl.bitly.com/v3/shorten?access_token=$BITLY_ACCESS_TOKEN&login=$BITLY_USER_NAME&longUrl=$@" \
+    | jq -r .data.url ;)
+
+  echo "URL Copied to Clipboard! :"
+  echo $short_url;
+  echo -n $short_url | pbcopy
+}
+
 # List of Makefile targets
 function print_make_targets { cat Makefile|egrep "^.+: ?+"|egrep "^[a-z_]+:"|cut -d: -f1 ; }
 
