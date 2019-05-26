@@ -24,7 +24,6 @@ gem_group :development do
   gem 'pry-byebug'
   gem 'pry-coolline'
   gem 'pry-rails'
-  gem 'rack-mini-profiler', require: false
   gem 'rubocop', require: false
   gem 'squasher'
 end
@@ -61,9 +60,6 @@ after_bundle do
   # Add bullet gem configure
   run %(head config/environments/development.rb -n -1 > config/environments/tmp && mv config/environments/tmp config/environments/development.rb) # remove last line
   run %(wget https://raw.githubusercontent.com/gouf/dotfiles/master/.bullet_config -O - >> config/environments/development.rb)
-
-  # Init rack-runtime
-  run %(bundle exec rails g rack_profiler:install)
 
   # RSpec
   run 'bundle exec guard init rspec'
