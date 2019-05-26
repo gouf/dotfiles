@@ -350,6 +350,9 @@ if dein#load_state('/home/gouf/.cache/dein')
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('posva/vim-vue')
+  call dein#add('leafgarland/typescript-vim')
   call dein#add('2072/PHP-Indenting-for-VIm')
   call dein#add('Shougo/neocomplcache')
   call dein#add('Shougo/neosnippet-snippets')
