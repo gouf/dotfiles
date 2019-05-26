@@ -13,7 +13,12 @@ function bitly {
 
   echo "URL Copied to Clipboard! :"
   echo $short_url;
-  echo -n $short_url | pbcopy
+
+  # When...
+  # Mac   : pbcopy
+  # Linux : xclip
+  [[ uname = 'Darwin' ]] && echo -n $short_url | pbcopy
+  [[ uname = 'Linux' ]] && echo -n $short_url | xclip
 }
 
 # List of Makefile targets
