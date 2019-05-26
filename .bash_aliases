@@ -6,11 +6,16 @@ alias grep="grep --color"
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
+alias ls='ls -G'
 # alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+if [[ $(uname -s) -eq 'Darwin' ]]; then
+  alias notify_done='terminal-notifier -title "$([ $? = 0 ] && echo terminal || echo error)" -message  "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+else
+  alias notify_done='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+fi
 
 alias composer="php ~/.local/bin/composer.phar"
 
