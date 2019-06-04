@@ -1,5 +1,19 @@
 function urlencode { ruby -r cgi -e "puts CGI.escape(\""$1"\")" ; }
 
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; notify_done
+function notify_done {
+  if [[ $(uname -s) -eq 'Darwin' ]]; then
+    terminal-notifier \
+      -title "$([ $? = 0 ] && echo terminal || echo error)" \
+      -message "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\''')"
+  else
+    notify-send \
+      --urgency=low \
+      -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\''')"
+  fi
+}
+
 # bit.ly URL Shortener
 # Dependencies:
 # * BITLY_ACCESS_TOKEN
