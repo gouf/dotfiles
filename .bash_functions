@@ -80,7 +80,7 @@ function gitsb {
 }
 
 function check_home_local_bin {
-  DIR="$(env | sed 's/:/\n/g' | grep '$HOME/.local/bin' | head -n 1)"
+  DIR="$(env | sed 's/:/\n/g' | grep \"$HOME/.local/bin\" | head -n 1)"
 
   if [[ -z "$DIR" ]]; then
     echo "Please add '\$HOME/.local/bin' to your \$PATH"
