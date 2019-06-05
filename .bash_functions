@@ -147,6 +147,17 @@ function init_plane_java_project {
 }
 
 function wp_install {
+  if ! [ -x "$(command -v wp)" ];then
+    echo 'Please wp command install first.'
+    echo 'https://wp-cli.org/'
+    return 1
+  fi
+
+  if [ -z "$1" ];then
+    echo "Please specify the path."
+    return 1
+  fi
+
   wp core download --path=$1;
   cd $1;
   read -p 'name the database:' dbname;
