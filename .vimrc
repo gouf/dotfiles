@@ -86,6 +86,9 @@ au BufNewFile,BufRead Guardfile set filetype=ruby
 
 au BufNewFile,BufRead *.swift se ft=swift
 
+au BufNewFile,BufRead .bash_functions se ft=sh
+au BufNewFile,BufRead .bash_aliases se ft=sh
+
 filetype plugin indent on
 syntax on
 
