@@ -1,3 +1,4 @@
+alias gish="gitsh" # https://github.com/thoughtbot/gitsh
 alias sorbet="sb"
 alias sl='serverless'
 alias ccat='ccat -G String="_brown_" -G Plaintext="overline" -G Punctuation="darkteal" -G Decimal="darkgreen" -G Keyword="green" -G Comment="darkgray" -G Tag="faint"'
