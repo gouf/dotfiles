@@ -410,7 +410,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('kana/vim-smartinput')
   call dein#add('kannokanno/previm')
   call dein#add('kchmck/vim-coffee-script')
-  call dein#add('m2mdas/phpcomplete-extended')
   call dein#add('majutsushi/tagbar')
   call dein#add('mattn/emmet-vim')
   call dein#add('mechatroner/rainbow_csv')
@@ -473,8 +472,6 @@ execute pathogen#infect()
 
 se statusline+=%#warningmsg#
 se statusline+=%*
-
-let g:phpcomplete_index_composer_command = '/home/gouf/.local/bin/composer.phar'
 
 " change Spellcap background color
 " hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#002442 guisp=DarkBlue
