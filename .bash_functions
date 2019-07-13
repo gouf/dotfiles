@@ -1,3 +1,6 @@
+# Download placeholder image
+function place_hold_it { wget --quiet https://placehold.it/$1x$2 -O $1x$2.png; }
+
 function urlencode { ruby -r cgi -e "puts CGI.escape(\""$1"\")" ; }
 
 # Add an "alert" alias for long running commands.  Use like so:
