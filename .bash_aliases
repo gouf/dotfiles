@@ -1,3 +1,4 @@
+alias sorbet="sb"
 alias sl='serverless'
 alias ccat='ccat -G String="_brown_" -G Plaintext="overline" -G Punctuation="darkteal" -G Decimal="darkgreen" -G Keyword="green" -G Comment="darkgray" -G Tag="faint"'
 # eg. retab spaces_and_tabs_mixture_indented.txt
