@@ -28,6 +28,7 @@
   logo = log --pretty=oneline
   ls = ls-files
   ap = add -p
+  adp = add -p
   sh = show-branch
   sta = stash
   patch = diff --no-prefix --no-color
