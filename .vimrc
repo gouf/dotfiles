@@ -298,7 +298,17 @@ hi IndentGuidesOdd  ctermbg=darkgrey
 hi IndentGuidesEven ctermbg=lightgrey
 let g:indent_guides_enable_on_vim_startup = 1
 
-let g:previm_open_cmd = 'gnome-open'
+"
+" Previm settings
+"
+if has('macunix')
+  let g:previm_open_cmd = 'open'
+elseif has('unix')
+  let g:previm_open_cmd = 'gnome-open'
+elseif has('win32')
+  let g:previm_open_cmd = 'start'
+endif
+
 augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
