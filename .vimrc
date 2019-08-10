@@ -273,8 +273,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 let g:airline_section_b =
         \ '%{airline#extensions#branch#get_head()}' .
-        \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}' .
-        \ '%t%( %M%)'
+        \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}'
 
 set laststatus=2
 
