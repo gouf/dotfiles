@@ -138,6 +138,19 @@ let g:quickrun_config['tex'] = {
             \ }
 
 "
+" Solargraph
+"
+if executable('solargraph')
+    " gem install solargraph
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'solargraph',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        \ 'initialization_options': {"diagnostics": "true"},
+        \ 'whitelist': ['ruby'],
+        \ })
+endif
+
+"
 " pt integration
 "
 nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
