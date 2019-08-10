@@ -275,6 +275,9 @@ let g:airline_section_b =
         \ '%{airline#extensions#branch#get_head()}' .
         \ '%{""!=airline#extensions#branch#get_head()?("  " . g:airline_left_alt_sep . " "):""}'
 
+let g:airline_section_warning =
+  \ '%{LinterStatus()}'
+
 set laststatus=2
 
 " AlpacaTags
@@ -320,6 +323,23 @@ highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
+
+" Ref:
+" https://github.com/dense-analysis/ale/blob/4fe7402e89/README.md#5v-how-can-i-show-errors-or-warnings-in-my-statusline
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+" set statusline+=%{LinterStatus()}
 
 " Search Tasks
 let g:searchtasks_list=["TODO", "FIXME", "NOTE", "BUG"]
