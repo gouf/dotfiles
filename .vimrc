@@ -423,6 +423,7 @@ if dein#load_state(s:dein_dir)
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
+  call dein#add('dag/vim-fish')
   call dein#add('rust-lang/rust.vim')
   call dein#add('posva/vim-vue')
   call dein#add('leafgarland/typescript-vim')
