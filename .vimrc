@@ -62,6 +62,15 @@ augroup END
 nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-j> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
+"
+" <C-w> configures
+"
+nnoremap <C-w>t :tab sp<CR>
+nnoremap <C-w>T :tabnew<CR>
+nnoremap <C-w>l :terminal<CR>
+
+nnoremap <NL> i<CR><ESC>
+
 nmap <Leader>gd <Plug>(auto_git_diff_manual_update)
 
 " Encoding
