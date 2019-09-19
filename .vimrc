@@ -374,6 +374,8 @@ highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_sign_column_always = 1
 let g:ale_fix_on_save = 1
+nmap <silent> ]w <Plug>(ale_next_wrap)
+nmap <silent> [w <Plug>(ale_previous_wrap)]
 
 " Ref:
 " https://github.com/dense-analysis/ale/blob/4fe7402e89/README.md#5v-how-can-i-show-errors-or-warnings-in-my-statusline
