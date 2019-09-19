@@ -25,11 +25,6 @@ fi
 
 alias fig=docker-compose
 
-if [[ `which ccat` ]]
-then
-  alias cat=ccat
-fi
-
 # Load xdebug Zend extension with php command
 alias php='php -dzend_extension=xdebug.so'
 
