@@ -14,6 +14,7 @@
   autocrlf = input
   editor = vim
 [alias]
+  am = commit --ammend
   st = status
   co = commit -S
   ch = checkout
