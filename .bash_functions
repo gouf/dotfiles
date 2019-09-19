@@ -1,3 +1,13 @@
+# Remove all duplicated commands from ~/.bash_history
+# Ref: https://unix.stackexchange.com/questions/48713/how-can-i-remove-duplicates-in-my-bash-history-preserving-order
+function remove_dup_bash_history {
+  FILE_NAME="$(date +'%Y%m%d_%H%M%S')_bash_history.txt"
+
+  cat .bash_history |nl|sort -k2 -k 1,1nr|uniq -f1|sort -n|cut -f2 > $FILE_NAME
+
+  mv $FILE_NAME .bash_history
+}
+
 # Download placeholder image
 function place_hold_it { wget --quiet https://placehold.it/$1x$2 -O $1x$2.png; }
 
