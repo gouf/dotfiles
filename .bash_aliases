@@ -1,7 +1,9 @@
+alias dn="dotnet"
 alias gish="gitsh" # https://github.com/thoughtbot/gitsh
 alias sorbet="sb"
 alias sl='serverless'
-alias ccat='ccat -G String="_brown_" -G Plaintext="overline" -G Punctuation="darkteal" -G Decimal="darkgreen" -G Keyword="green" -G Comment="darkgray" -G Tag="faint"'
+#alias ccat='ccat -G String="_brown_" -G Plaintext="overline" -G Punctuation="darkteal" -G Decimal="darkgreen" -G Keyword="green" -G Comment="darkgray" -G Tag="faint"'
+[[ `which bat` ]] && alias cat='bat'
 # eg. retab spaces_and_tabs_mixture_indented.txt
 alias retab='vim -s <(echo -e "gg=G\n:retab\n:wqa")'
 alias less="less -R"
