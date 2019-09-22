@@ -3,9 +3,9 @@
 function remove_dup_bash_history {
   FILE_NAME="$(date +'%Y%m%d_%H%M%S')_bash_history.txt"
 
-  cat .bash_history |nl|sort -k2 -k 1,1nr|uniq -f1|sort -n|cut -f2 > $FILE_NAME
+  cat ~/.bash_history |nl|sort -k2 -k 1,1nr|uniq -f1|sort -n|cut -f2 > ~/$FILE_NAME
 
-  mv $FILE_NAME .bash_history
+  mv ~/$FILE_NAME ~/.bash_history
 }
 
 # Download placeholder image
