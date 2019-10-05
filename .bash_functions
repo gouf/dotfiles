@@ -1,3 +1,21 @@
+function salmon_run {
+  WORK_DIR="$(pwd)"
+
+  cd $HOME/splatnet2statink
+  python splatnet2statink.py --salmon -r
+
+  cd $WORK_DIR
+}
+
+function splatnet2statink {
+  WORK_DIR="$(pwd)"
+
+  cd $HOME/splatnet2statink
+  python ./splatnet2statink.py -M 240
+
+  cd $WORK_DIR
+}
+
 function schedule_candidate {
   WORK_DIR="$(pwd)"
   cd /Users/gouf/google_calendar_demo
