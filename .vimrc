@@ -67,7 +67,7 @@ nnoremap <C-j> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 "
 nnoremap <C-w>t :tab sp<CR>
 nnoremap <C-w>T :tabnew<CR>
-nnoremap <C-w>l :terminal<CR>
+nnoremap <C-w>L :terminal<CR>
 
 nnoremap <NL> i<CR><ESC>
 
