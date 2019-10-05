@@ -14,8 +14,6 @@ alias la='ls -A'
 alias ls='ls -G'
 # alias l='ls -CF'
 
-alias composer="php ~/.local/bin/composer.phar"
-
 # Colored diff
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
