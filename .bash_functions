@@ -1,3 +1,10 @@
+function schedule_candidate {
+  WORK_DIR="$(pwd)"
+  cd /Users/gouf/google_calendar_demo
+  ruby main.rb
+  cd $WORK_DIR
+}
+
 # Remove all duplicated commands from ~/.bash_history
 # Ref: https://unix.stackexchange.com/questions/48713/how-can-i-remove-duplicates-in-my-bash-history-preserving-order
 function remove_dup_bash_history {
