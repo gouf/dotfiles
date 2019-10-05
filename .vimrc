@@ -311,8 +311,11 @@ augroup END
 
 " neosnippet https://github.com/Shougo/neosnippet.vim
 " https://gist.github.com/alpaca-tc/4521425
+"
 
 " let s:default_snippet = neobundle#get_neobundle_dir() . '/neosnippet/autoload/neosnippet/snippets' " 本体に入っているsnippet
+let s:default_snippet =  expand('~/.cache/dein') . '/neosnippet/autoload/neosnippet/snippets'
+
 let s:my_snippet = '~/.vim/snippets' " 自分のsnippet
 let g:neosnippet#snippets_directory = s:my_snippet
 " let g:neosnippet#snippets_directory = s:default_snippet . ',' . s:my_snippet
