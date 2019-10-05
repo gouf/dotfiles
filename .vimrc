@@ -606,11 +606,3 @@ augroup AdditionalHighlights
   autocmd ColorScheme * highlight link ZenkakuSpace Error
   autocmd Syntax * syntax match ZenkakuSpace containedin=ALL /　/
 augroup END
-
-" Call dein#update() from terminal
-" like: vim +DeinUpdateCLI
-function! DeinUpdateCLI()
-  call dein#update()
-  :qa
-endfunction
-command! DeinUpdateCLI call DeinUpdateCLI()
