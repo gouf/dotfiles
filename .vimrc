@@ -299,16 +299,7 @@ autocmd BufNewFile,BufRead *.slim set filetype=slim
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Ref: http://hail2u.net/blog/software/vim-additional-highlights.html
-" Additional highlights
-augroup AdditionalHighlights
-  autocmd!
-
-  " Zenkaku space
-  autocmd ColorScheme * highlight link ZenkakuSpace Error
-  autocmd Syntax * syntax match ZenkakuSpace containedin=ALL /　/
-augroup END
-
+"
 " neosnippet https://github.com/Shougo/neosnippet.vim
 " https://gist.github.com/alpaca-tc/4521425
 "
@@ -605,3 +596,21 @@ se statusline+=%*
 " change Spellcap background color
 " hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#002442 guisp=DarkBlue
 hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#3A8A5A guisp=DarkBlue
+
+" Ref: http://hail2u.net/blog/software/vim-additional-highlights.html
+" Additional highlights
+augroup AdditionalHighlights
+  autocmd!
+
+  " Zenkaku space
+  autocmd ColorScheme * highlight link ZenkakuSpace Error
+  autocmd Syntax * syntax match ZenkakuSpace containedin=ALL /　/
+augroup END
+
+" Call dein#update() from terminal
+" like: vim +DeinUpdateCLI
+function! DeinUpdateCLI()
+  call dein#update()
+  :qa
+endfunction
+command! DeinUpdateCLI call DeinUpdateCLI()
