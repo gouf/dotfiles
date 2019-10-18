@@ -237,6 +237,13 @@ let g:quickrun_config['haskell/stack'] = {
 \  'exec': '%c %o %s %a'
 \ }
 
+let g:quickrun_config['markdown'] = {
+\  'runner': 'shell',
+\  'outputter': 'null',
+\  'command': ':PrevimOpen',
+\  'exec': '%c',
+\ }
+
 "
 " Toggle Pane Maximize
 "
