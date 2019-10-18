@@ -606,13 +606,7 @@ hi SpellCap term=reverse cterm=underline ctermbg=17 gui=underline guibg=#3A8A5A 
 augroup AdditionalHighlights
   autocmd!
 
-  " Trailing spaces
-  " autocmd ColorScheme * highlight link TrailingSpaces Error
-  autocmd ColorScheme * highlight link TrailingSpaces SpellBad
-  autocmd Syntax * syntax match TrailingSpaces containedin=ALL /\s\+$/
-
   " Zenkaku space
-  " autocmd ColorScheme * highlight link ZenkakuSpace Error
   autocmd ColorScheme * highlight link ZenkakuSpace SpellBad
   autocmd Syntax * syntax match ZenkakuSpace containedin=ALL /　/
 augroup END
