@@ -111,7 +111,7 @@ map g/ <Plug>(incsearch-stay)
 "
 " incsearch-fuzzy.vim
 "
-map f/ <Plug>(incsearch-fuzzy-/)
+" map f/ <Plug>(incsearch-fuzzy-/)
 map f? <Plug>(incsearch-fuzzy-?)
 map fg/ <Plug>(incsearch-fuzzy-stay)
 
