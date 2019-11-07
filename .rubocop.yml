@@ -1431,7 +1431,7 @@ Lint/Loop:
   Enabled: true
   VersionAdded: '0.9'
 
-Lint/MissingCopEnableDirective:
+Lint/RedundantCopEnableDirective:
   Description: 'Checks for a `# rubocop:enable` after `# rubocop:disable`.'
   Enabled: true
   VersionAdded: '0.52'
@@ -1640,7 +1640,7 @@ Lint/UnifiedInteger:
   Enabled: true
   VersionAdded: '0.43'
 
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Description: >-
                  Checks for rubocop:disable comments that can be removed.
                  Note: this cop is not disabled when disabling all cops.
@@ -1648,17 +1648,17 @@ Lint/UnneededCopDisableDirective:
   Enabled: true
   VersionAdded: '0.53'
 
-Lint/UnneededCopEnableDirective:
+Lint/RedundantCopDisableDirective:
   Description: Checks for rubocop:enable comments that can be removed.
   Enabled: true
   VersionAdded: '0.53'
 
-Lint/UnneededRequireStatement:
+Lint/RedundantRequireStatement:
   Description: 'Checks for unnecessary `require` statement.'
   Enabled: true
   VersionAdded: '0.51'
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Description: 'Checks for splat unnecessarily being called on literals.'
   Enabled: true
   VersionAdded: '0.43'
@@ -1714,7 +1714,8 @@ Lint/UselessAccessModifier:
 Lint/UselessAssignment:
   Description: 'Checks for useless assignment to a local variable.'
   StyleGuide: '#underscore-unused-vars'
-  Enabled: true
+  # Enabled: true
+  Enabled: false
   VersionAdded: '0.11'
 
 Lint/UselessComparison:
@@ -1860,7 +1861,8 @@ Naming/AccessorMethodName:
 Naming/AsciiIdentifiers:
   Description: 'Use only ascii symbols in identifiers.'
   StyleGuide: '#english-identifiers'
-  Enabled: true
+  # Enabled: true
+  Enabled: false
   VersionAdded: '0.50'
 
 Naming/BinaryOperatorParameterName:
@@ -3747,7 +3749,8 @@ Style/TrailingUnderscoreVariable:
                  Checks for the usage of unneeded trailing underscores at the
                  end of parallel variable assignment.
   AllowNamedUnderscoreVariables: true
-  Enabled: true
+  # Enabled: true
+  Enabled: false
   VersionAdded: '0.31'
   VersionChanged: '0.35'
 
@@ -3806,29 +3809,29 @@ Style/UnlessElse:
   Enabled: true
   VersionAdded: '0.9'
 
-Style/UnneededCapitalW:
+Style/RedundantCapitalW:
   Description: 'Checks for %W when interpolation is not needed.'
   Enabled: true
   VersionAdded: '0.21'
   VersionChanged: '0.24'
 
-Style/UnneededCondition:
+Style/RedundantCondition:
   Description: 'Checks for unnecessary conditional expressions.'
   Enabled: true
   VersionAdded: '0.57'
 
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Description: 'Checks for strings that are just an interpolated expression.'
   Enabled: true
   VersionAdded: '0.36'
 
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Description: 'Checks for %q/%Q when single quotes or double quotes would do.'
   StyleGuide: '#percent-q'
   Enabled: true
   VersionAdded: '0.24'
 
-Style/UnneededSort:
+Style/RedundantSort:
   Description: >-
                   Use `min` instead of `sort.first`,
                   `max_by` instead of `sort_by...last`, etc.
