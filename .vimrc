@@ -409,11 +409,13 @@ augroup END
 
 "
 " Ale (Lint Engine)
+
+let g:ale_set_highlights = 0
 "
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+let g:ale_sign_column_always = 0
+" let g:ale_fix_on_save = 1
 nmap <silent> ]w <Plug>(ale_next_wrap)
 nmap <silent> [w <Plug>(ale_previous_wrap)]
 
