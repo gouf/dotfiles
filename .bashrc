@@ -127,8 +127,6 @@ if [ -f $HOME/git-prompt.sh ]; then
   source $HOME/git-prompt.sh
 fi
 
-GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
