@@ -1,3 +1,8 @@
+function corona_stats {
+  COUNTRY=${1:-"japan"}
+  curl https://corona-stats.online/$COUNTRY
+}
+
 function salmon_run {
   WORK_DIR="$(pwd)"
 
