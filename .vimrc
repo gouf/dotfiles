@@ -388,8 +388,10 @@ exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
 
 " indent guides
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=darkgrey
-hi IndentGuidesEven ctermbg=lightgrey
+
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=Grey11 ctermbg=234 guifg=Grey42 ctermfg=242
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=Grey19 ctermbg=236 guifg=Grey35 ctermfg=240
+
 let g:indent_guides_enable_on_vim_startup = 1
 
 "
