@@ -14,6 +14,8 @@
   autocrlf = input
   editor = vim
 [alias]
+  s  = switch
+  r  = restore
   am = commit --amend
   st = status
   co = commit -S
