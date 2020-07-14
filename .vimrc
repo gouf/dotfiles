@@ -40,6 +40,7 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd filetype crontab setlocal nobackup nowritebackup
+au filetype java setlocal ts=4 sts=2 sw=4 noet listchars=tab:»･
 
 au BufNewFile,BufRead *.php se ft=php
 
@@ -546,6 +547,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('nvie/vim-flake8')
   call dein#add('osyo-manga/vim-over')
   call dein#add('pangloss/vim-javascript')
+  call dein#add('vim-jp/vim-java')
   call dein#add('posva/vim-vue')
   call dein#add('rhysd/vim-crystal')
   call dein#add('rizzatti/dash.vim')
