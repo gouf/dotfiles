@@ -10,6 +10,7 @@ esac
 
 if [[ $(uname -s) -eq 'Darwin' ]]; then
   export LSCOLORS=gxfxcxdxbxegedabagacad
+  export LS_COLORS="di=36;40:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=36;42:ow=30;43"
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
