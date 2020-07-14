@@ -44,3 +44,7 @@
   tool = vimdiff
 [rebase]
   auttostash = true
+[gpg]
+  program = gpg
+[commit]
+  gpgsign = true
