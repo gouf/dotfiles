@@ -9,12 +9,12 @@
   chenged = green
   untracked = cyan
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = /Users/gouf/.gitignore_global
   attributefile = ~/.gitattributes_global
   autocrlf = input
   editor = vim
 [alias]
-  am = commit --ammend
+  am = commit --amend
   st = status
   co = commit -S
   ch = checkout
