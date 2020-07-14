@@ -80,7 +80,7 @@ function bitly {
 function print_make_targets { cat Makefile|egrep "^.+: ?+"|egrep "^[a-z_]+:"|cut -d: -f1 ; }
 
 # Git Ignore Request
-function gi { curl -s https://www.gitignore.io/api/$@ ; }
+function gi { curl -sL https://www.gitignore.io/api/$@ ; }
 
 # License file
 # apache, artistic, cc0, eclipse, affero, gpl2, gpl3, lgpl2, lgpl3, isc, mit, mozilla, nbsd, unlicense, sbsd
