@@ -744,7 +744,7 @@ Layout/FirstHashElementIndentation:
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
 
-Layout/FirstParameterIndentation:
+Layout/FirstArgumentIndentation:
   Description: >-
                  Checks the indentation of the first parameter in a
                  method definition.
@@ -1190,7 +1190,7 @@ Layout/SpaceInsideStringInterpolation:
     - space
     - no_space
 
-Layout/Tab:
+Layout/IndentationStyle:
   Description: 'No hard tabs.'
   StyleGuide: '#spaces-indentation'
   Enabled: true
@@ -1333,7 +1333,7 @@ Lint/EmptyWhen:
   Enabled: true
   # VersionAdded: '0.45'
 
-Lint/EndInMethod:
+Lint/EndBlock:
   Description: 'END blocks should not be placed inside method definitions.'
   Enabled: true
   # VersionAdded: '0.9'
@@ -2309,24 +2309,6 @@ Style/BlockDelimiters:
   #   # also good
   #   collection.each do |element| puts element end
   AllowBracesOnProceduralOneLiners: false
-
-Style/BracesAroundHashParameters:
-  Description: 'Enforce braces style around hash parameters.'
-  Enabled: true
-  # VersionAdded: '0.14.1'
-  # VersionChanged: '0.28'
-  EnforcedStyle: no_braces
-  SupportedStyles:
-    # The `braces` style enforces braces around all method parameters that are
-    # hashes.
-    - braces
-    # The `no_braces` style checks that the last parameter doesn't have braces
-    # around it.
-    - no_braces
-    # The `context_dependent` style checks that the last parameter doesn't have
-    # braces around it, but requires braces if the second to last parameter is
-    # also a hash literal.
-    - context_dependent
 
 Style/CaseEquality:
   Description: 'Avoid explicit use of the case equality operator(===).'
