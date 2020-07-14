@@ -17,7 +17,10 @@
 "\e\e[D": backward-word
 
 set colored-stats On
+set colored-completion-prefix On
+set completion-map-case On
 set completion-ignore-case On
+set menu-complete-display-prefix On
 set completion-prefix-display-length 3
 set mark-symlinked-directories On
 set show-all-if-ambiguous On
