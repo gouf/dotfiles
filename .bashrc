@@ -205,7 +205,7 @@ CLI_ENGINE_AC_BASH_SETUP_PATH=$HOME/.cache/heroku/completions/bash_setup && test
 #
 if [ -f ~/.enhancd/init.sh ]; then
   # export ENHANCD_COMMAND=ecd # Default command modification
-  export ENHANCD_FILTER="$GOBIN/peco"
+  export ENHANCD_FILTER="peco"
   export ENHANCD_DOT_SHOW_FULLPATH=1
   export ENHANCD_DISABLE_DOT=0 # Default: 0
   export ENHANCD_DISABLE_HYPHEN=0 # Default: 0
