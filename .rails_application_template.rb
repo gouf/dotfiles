@@ -10,7 +10,6 @@ gem 'slim-rails'
 gem 'rails_safe_tasks'
 gem 'nprogress-rails'
 
-gem 'less-rails'
 gem 'bootstrap'
 gem 'freeezer'
 
