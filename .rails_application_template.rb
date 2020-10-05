@@ -21,7 +21,6 @@ gem_group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'pry-byebug'
-  gem 'pry-coolline'
   gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'squasher'
