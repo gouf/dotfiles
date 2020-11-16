@@ -1,3 +1,7 @@
+function count_lines {
+  find -type f -exec wc -l {} \;|sort -rn
+}
+
 function corona_stats {
   COUNTRY=${1:-"japan"}
   curl https://corona-stats.online/$COUNTRY
