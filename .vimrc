@@ -165,19 +165,6 @@ let g:vimfiler_as_default_explorer = 1
 let g:cakephp_enable_auto_mode = 1
 
 "
-" vim-quickrun
-"
-let g:quickrun_config = {} " Init
-let g:quickrun_config['*'] = {'split': ''}
-let g:quickrun_config['tex'] = {
-            \   'command' : 'latexmk',
-            \   'outputter' : 'error',
-            \   'outputter/error/error' : 'quickfix',
-            \   'cmdopt': '-pdf -output-directory=latex_pdf',
-            \   'exec': ['%c %o %s', 'mv latex_pdf/*.pdf .', 'rm -rf latex_pdf']
-            \ }
-
-"
 " Solargraph
 "
 if executable('solargraph')
@@ -212,10 +199,18 @@ if executable('pt')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+let g:quickrun_config = {}
+
+let g:quickrun_config['ruby'] = {
+\     'type': 'ruby',
+\     'command': 'ruby',
+\     'cmdopt': '',
+\     'exec': '%c %o %s'
+\}
+" General
 " Ref: https://github.com/pocke/dotfiles/commit/ef7039170cdfe245c9b92c105700652b9e59b299
 let g:quickrun_config['_'] = {
-\   'runner': 'vimproc',
-\   'runner/vimproc/updatetime': 60,
+\   'runner': 'terminal',
 \   'tempfile': '%{expand("%:p:h") . "/" . system("echo -n $(uuidgen)")}'
 \ }
 
