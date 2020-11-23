@@ -28,7 +28,7 @@ function splatnet2statink {
 function schedule_candidate {
   WORK_DIR="$(pwd)"
   cd $HOME/google_calendar_demo
-  ruby main.rb
+  bundle e ruby main.rb
   cd $WORK_DIR
 }
 
