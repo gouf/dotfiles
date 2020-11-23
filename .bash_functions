@@ -224,12 +224,12 @@ function init_tachikoma_ruby {
   echo 'strategy: 'bundler'' > .tachikoma.yml
 }
 
-function ctags_javascript {
-  ctags -R --languages=javascript --exclude=.git --exclude=log .
-}
-
 function ctags_ruby {
   ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)
+}
+
+function ctags_javascript {
+  ctags -R && sed -i '' -E '/^(if|switch|function|module\.exports|it|describe).+language:js$/d' tags
 }
 
 function weather {
