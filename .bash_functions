@@ -6,6 +6,7 @@ function corona_stats {
   COUNTRY=${1:-"japan"}
   curl https://corona-stats.online/$COUNTRY
 }
+alias covid_stats=corona_stats
 
 function pip_upgrade {
   pip install --upgrade pip
