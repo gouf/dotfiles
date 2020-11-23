@@ -504,6 +504,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+  call dein#add('neoclide/coc.nvim')
   call dein#add('kien/ctrlp.vim')
   call dein#add('cespare/vim-toml')
   call dein#add('2072/PHP-Indenting-for-VIm')
