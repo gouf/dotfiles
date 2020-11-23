@@ -7,6 +7,10 @@ function corona_stats {
   curl https://corona-stats.online/$COUNTRY
 }
 
+function pip_upgrade {
+  pip install --upgrade pip
+}
+
 function salmon_run {
   WORK_DIR="$(pwd)"
 
