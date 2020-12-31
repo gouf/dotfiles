@@ -37,6 +37,9 @@ set completeopt=menu,preview
 set cursorline
 set helplang=ja,en
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
@@ -323,6 +326,15 @@ smap <silent><C-F>            <Plug>(neosnippet_expand_or_jump)
 " xmap <silent>o              <Plug>(neosnippet_register_oneshot_snippet)
 "}}}
 
+" LanguageClient-neovim
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['~/.anyenv/envs/rbenv/shims/solargraph', 'stdio']
+    \}
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
@@ -474,6 +486,8 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
+let g:dein#auto_recache = 1
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -504,7 +518,16 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  call dein#add('neoclide/coc.nvim')
+  " call dein#add('neoclide/coc.nvim')
+  call dein#add('autozimu/LanguageClient-neovim', {
+        \ 'rev': 'next',
+        \ 'build': 'bash install.sh',
+        \ })
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#add('kien/ctrlp.vim')
   call dein#add('cespare/vim-toml')
   call dein#add('2072/PHP-Indenting-for-VIm')
