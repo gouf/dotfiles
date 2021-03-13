@@ -32,9 +32,9 @@ function splatnet2statink {
 
 function schedule_candidate {
   WORK_DIR="$(pwd)"
-  cd $HOME/google_calendar_demo
+  cd $HOME/google_calendar_demo > /dev/null
   bundle e ruby main.rb
-  cd $WORK_DIR
+  cd $WORK_DIR > /dev/null
 }
 
 # Remove all duplicated commands from ~/.bash_history
