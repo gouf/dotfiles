@@ -168,13 +168,18 @@ function update_terraform {
 }
 
 function switch_git_config {
-  name=$1
-  email=$2
-  gpg_pub_sign=$3
+  name="$1"
+  email="$2"
+  gpg_pub_sign="$3"
 
-  git config --global user.name $name
-  git config --global user.email $email
-  git config --global user.signingkey $gpg_pub_sign
+  git config --global --unset-all user.name
+  git config --global --unset-all user.email
+  git config --global --unset-all user.signingkey
+
+  git config --global user.name "$name"
+  git config --global user.email "$email"
+  git config --global user.signingkey "$gpg_pub_sign"
+
   echo "Configuration has changed:"
   echo "git config user.name: $(git config user.name)"
   echo "git config user.email: $(git config user.email)"
