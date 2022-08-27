@@ -1,6 +1,8 @@
+alias toc="gh-md-toc"
+alias aws="/usr/local/bin/aws"
 alias dn="dotnet"
 alias gish="gitsh" # https://github.com/thoughtbot/gitsh
-alias sorbet="sb"
+alias sorbet="srb"
 alias sl='serverless'
 #alias ccat='ccat -G String="_brown_" -G Plaintext="overline" -G Punctuation="darkteal" -G Decimal="darkgreen" -G Keyword="green" -G Comment="darkgray" -G Tag="faint"'
 [[ `which bat` ]] && alias cat='bat'

@@ -20,6 +20,7 @@
   st = status
   co = commit -S
   ch = checkout
+  sw = switch
   br = branch
   df = diff --ignore-space-at-eol --color-words
   dfs = diff --ignore-space-at-eol --color-words --staged
@@ -29,6 +30,7 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   logo = log --pretty=oneline
+  logs = shortlog -s -n --all --no-merges
   ls = ls-files
   ap = add -p
   adp = add -p

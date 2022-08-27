@@ -141,7 +141,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
 export GOPATH="$HOME/.golang"
 export GOBIN="$GOPATH/bin"

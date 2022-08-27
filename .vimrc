@@ -37,9 +37,6 @@ set completeopt=menu,preview
 set cursorline
 set helplang=ja,en
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
@@ -89,6 +86,9 @@ let g:user_emmet_settings = {
 \}
 
 au BufNewFile,BufRead Routefile set ft=ruby
+au BufNewFile,BufRead *.rb set ft=ruby
+
+au BufNewFile,BufRead *.erb set ft=eruby
 
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
@@ -103,8 +103,9 @@ au BufNewFile,BufRead *.swift se ft=swift
 au BufNewFile,BufRead .bash_functions se ft=sh
 au BufNewFile,BufRead .bash_aliases se ft=sh
 
+au BufNewFile,BufRead Dockerfile se ft=dockerfile
+
 filetype plugin indent on
-syntax on
 
 "
 " incsearch.vim
@@ -308,12 +309,6 @@ autocmd BufNewFile,BufRead *.slim set filetype=slim
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-"
-" neosnippet https://github.com/Shougo/neosnippet.vim
-" https://gist.github.com/alpaca-tc/4521425
-"
-
-" let s:default_snippet = neobundle#get_neobundle_dir() . '/neosnippet/autoload/neosnippet/snippets' " 本体に入っているsnippet
 let s:default_snippet =  expand('~/.cache/dein') . '/neosnippet/autoload/neosnippet/snippets'
 
 let s:my_snippet = '~/.vim/snippets' " 自分のsnippet
@@ -381,17 +376,6 @@ let g:airline_section_warning =
   \ '%{LinterStatus()}'
 
 set laststatus=2
-
-" AlpacaTags
-augroup AlpacaTags
-  autocmd!
-  if exists(':Tags')
-    autocmd BufWritePost Gemfile TagsBundle
-    autocmd BufEnter * TagsSet
-    " 毎回保存と同時更新する場合はコメントを外す
-    autocmd BufWritePost * TagsUpdate
-  endif
-augroup END
 
 " Go lang complement
 exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
@@ -523,14 +507,8 @@ if dein#load_state(s:dein_dir)
         \ 'rev': 'next',
         \ 'build': 'bash install.sh',
         \ })
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  call dein#add('kien/ctrlp.vim')
-  call dein#add('cespare/vim-toml')
   call dein#add('2072/PHP-Indenting-for-VIm')
+  call dein#add('IJustDev/vim-ruby-refactoring')
   call dein#add('Shougo/neocomplcache')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/neosnippet.vim')
@@ -542,14 +520,13 @@ if dein#load_state(s:dein_dir)
   call dein#add('StanAngeloff/php.vim')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('aklt/plantuml-syntax')
-  call dein#add('alpaca-tc/alpaca_tags')
   call dein#add('andymass/vim-matchup')
   call dein#add('ap/vim-css-color')
   call dein#add('bling/vim-airline')
+  call dein#add('cespare/vim-toml')
   call dein#add('dag/vim-fish')
   call dein#add('dense-analysis/ale')
   call dein#add('digitaltoad/vim-jade')
-  call dein#add('ecomba/vim-ruby-refactoring')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('ekalinin/Dockerfile.vim')
   call dein#add('elixir-lang/vim-elixir')
@@ -564,8 +541,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('kana/vim-operator-user')
   call dein#add('kana/vim-smartinput')
-  call dein#add('previm/previm')
   call dein#add('kchmck/vim-coffee-script')
+  call dein#add('kien/ctrlp.vim')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('mattn/emmet-vim')
   call dein#add('mechatroner/rainbow_csv')
@@ -575,8 +552,8 @@ if dein#load_state(s:dein_dir)
   call dein#add('nvie/vim-flake8')
   call dein#add('osyo-manga/vim-over')
   call dein#add('pangloss/vim-javascript')
-  call dein#add('vim-jp/vim-java')
   call dein#add('posva/vim-vue')
+  call dein#add('previm/previm')
   call dein#add('rhysd/vim-crystal')
   call dein#add('rizzatti/dash.vim')
   call dein#add('rizzatti/funcoo.vim')
@@ -586,7 +563,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('toyamarinyon/vim-swift')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-endwise')
-  call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-pathogen')
   call dein#add('tpope/vim-rails')
   call dein#add('tpope/vim-repeat')
@@ -595,6 +571,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('tyru/open-browser.vim')
   call dein#add('tyru/operator-camelize.vim')
   call dein#add('vim-jp/vim-go-extra')
+  call dein#add('vim-jp/vim-java')
   call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#add('vim-scripts/Highlight-UnMatched-Brackets')
   call dein#add('vim-scripts/Zen-Color-Scheme')
@@ -614,10 +591,6 @@ if dein#load_state(s:dein_dir)
   call dein#end()
   call dein#save_state()
 endif
-
-" Required:
-filetype plugin indent on
-syntax enable
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
@@ -646,3 +619,5 @@ augroup END
 " colorscheme desert
 colorscheme jellybeans
 " colorscheme hybrid
+
+syntax on

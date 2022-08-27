@@ -1,3 +1,7 @@
+function git_this_month {
+  git shortlog -s -n --all --no-merges --since="last month"
+}
+
 function count_lines {
   find -type f -exec wc -l {} \;|sort -rn
 }
@@ -49,6 +53,7 @@ function remove_dup_bash_history {
 function place_hold_it { wget --quiet https://placehold.it/$1x$2 -O $1x$2.png; }
 
 function urlencode { ruby -r cgi -e "puts CGI.escape(\""$1"\")" ; }
+function urldecode { ruby -r cgi -e "puts CGI.unescape(\""$1"\")" ; }
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; notify_done
@@ -180,7 +185,7 @@ function switch_git_config {
   git config --global user.email "$email"
   git config --global user.signingkey "$gpg_pub_sign"
 
-  echo "Configuration has changed:"
+  echo "Configuration has been changed:"
   echo "git config user.name: $(git config user.name)"
   echo "git config user.email: $(git config user.email)"
   echo "git config user.signingkey: $(git config user.signingkey)"
@@ -191,8 +196,9 @@ function gouf {
 }
 
 function git_whoami {
-  git config user.name
-  git config user.email
+  echo "User Name: $(git config user.name)"
+  echo "Email: $(git config user.email)"
+  echo "Sign: $(git config user.signingkey)"
 }
 
 function init_plane_java_project {
