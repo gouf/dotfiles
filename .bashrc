@@ -221,3 +221,11 @@ fi
 # Overwrite Ctrl-R key map
 [[ "$(uname -s)" = 'Linux' ]] && bind -x '"\C-r":peco-select-history-linux'
 [[ "$(uname -s)" = 'Darwin' ]] && bind -x '"\C-r":peco-select-history-mac'
+
+if ! command -v direnv; then
+  eval "$(direnv hook bash)"
+fi
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
