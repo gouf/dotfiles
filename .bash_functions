@@ -25,22 +25,6 @@ function salmon_run {
   cd $WORK_DIR
 }
 
-function splatnet2statink {
-  WORK_DIR="$(pwd)"
-
-  cd $HOME/splatnet2statink
-  python ./splatnet2statink.py -M 240
-
-  cd $WORK_DIR
-}
-
-function schedule_candidate {
-  WORK_DIR="$(pwd)"
-  cd $HOME/google_calendar_demo > /dev/null
-  bundle e ruby main.rb
-  cd $WORK_DIR > /dev/null
-}
-
 # Remove all duplicated commands from ~/.bash_history
 # Ref: [bash - How can I remove duplicates in my .bash_history, preserving order? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/48713/how-can-i-remove-duplicates-in-my-bash-history-preserving-order)
 function remove_dup_bash_history {
@@ -229,10 +213,6 @@ function wp_install {
 
 function github_today {
   hub compare $(git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author="$(git config --get user.name)"|(head -n 1;tail -n 1)|cut -d\  -f 1|sed 'N;s/\n/\.\.\./' -)
-}
-
-function init_tachikoma_ruby {
-  echo 'strategy: 'bundler'' > .tachikoma.yml
 }
 
 function ctags_ruby {
