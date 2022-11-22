@@ -36,6 +36,7 @@ set list " shows hidden characters as control character
 set completeopt=menu,preview
 set cursorline
 set helplang=ja,en
+set redrawtime=4000
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
@@ -104,6 +105,10 @@ au BufNewFile,BufRead .bash_functions se ft=sh
 au BufNewFile,BufRead .bash_aliases se ft=sh
 
 au BufNewFile,BufRead Dockerfile se ft=dockerfile
+
+" fold などの設定を自動保存・読み込み
+au BufWinLeave *.* mkview!
+au BufWinEnter *.* silent loadview
 
 filetype plugin indent on
 
@@ -202,6 +207,9 @@ if executable('pt')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor'
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+" QuickRun Trigger key
+nnoremap <leader>r :QuickRun<CR>
 
 let g:quickrun_config = {}
 
