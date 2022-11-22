@@ -39,11 +39,13 @@
   patch = diff --no-prefix --no-color
   today = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --since=midnight --oneline --author=\"`git config --get user.name`\"'"
   pushall = push --tags --recurse-submodules=on-demand
+  thisBranch = log master..
 
 [filter "lfs"]
   required = true
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
 [merge]
   tool = vimdiff
 [rebase]
