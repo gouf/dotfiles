@@ -46,22 +46,6 @@ end
 after_bundle do
   run 'curl https://www.gitignore.io/api/vim,rails,node > .gitignore'
 
-  # nprogress
-  run 'echo "//= require nprogress" >> app/assets/javascripts/application.js'
-  run 'echo "//= require nprogress-turbolinks" >> app/assets/javascripts/application.js'
-  run 'echo "/*" >> app/assets/stylesheets/application.scss'
-  run 'echo " *= require nprogress" >> app/assets/stylesheets/application.scss'
-  run 'echo " */" >> app/assets/stylesheets/application.scss'
-
-  # bootstrap
-  run %(echo "@import 'bootstrap';" >> app/assets/stylesheets/application.scss)
-  run %(echo "//= require popper" >> app/assets/javascripts/application.js)
-  run %(echo "//= require bootstrap-sprockets" >> app/assets/javascripts/application.js)
-
-  # Add bullet gem configure
-  run %(head config/environments/development.rb -n -1 > config/environments/tmp && mv config/environments/tmp config/environments/development.rb) # remove last line
-  run %(wget https://raw.githubusercontent.com/gouf/dotfiles/master/.bullet_config -O - >> config/environments/development.rb)
-
   # RSpec
   run 'bundle exec guard init rspec'
   run %(yes | bundle exec rails generate rspec:install)
