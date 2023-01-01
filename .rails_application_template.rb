@@ -31,12 +31,15 @@ gem_group :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'fuubar'
   gem 'launchy'
   gem 'mutant-rspec'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'timecop'
+end
+
+gem_group :test, :development do
+  gem 'fuubar'
 end
 
 # works on Rails 4.2(?) or later
