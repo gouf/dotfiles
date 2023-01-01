@@ -317,17 +317,7 @@ autocmd BufNewFile,BufRead *.slim set filetype=slim
 " remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-let s:default_snippet =  expand('~/.cache/dein') . '/neosnippet/autoload/neosnippet/snippets'
-
 let s:my_snippet = '~/.vim/snippets' " 自分のsnippet
-let g:neosnippet#snippets_directory = s:my_snippet
-" let g:neosnippet#snippets_directory = s:default_snippet . ',' . s:my_snippet
-imap <silent><C-F>            <Plug>(neosnippet_expand_or_jump)
-inoremap <silent><C-U>        <ESC>:<C-U>Unite snippet<CR>
-nnoremap <silent><Space>e     :<C-U>NeoSnippetEdit -split<CR>
-smap <silent><C-F>            <Plug>(neosnippet_expand_or_jump)
-" xmap <silent>o              <Plug>(neosnippet_register_oneshot_snippet)
-"}}}
 
 " LanguageClient-neovim
 set hidden
@@ -337,14 +327,6 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -499,8 +481,6 @@ if dein#load_state(s:dein_dir)
   call dein#add(s:dein_repo_dir)
 
   " Add or remove your plugins here:
-  " call dein#add('Shougo/neosnippet.vim')
-  " call dein#add('Shougo/neosnippet-snippets')
 
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
@@ -517,9 +497,8 @@ if dein#load_state(s:dein_dir)
         \ })
   call dein#add('2072/PHP-Indenting-for-VIm')
   call dein#add('IJustDev/vim-ruby-refactoring')
-  call dein#add('Shougo/neocomplcache')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('wakatime/vim-wakatime')
+  " call dein#add('Shougo/neocomplcache')
   call dein#add('Shougo/neoyank.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler')
@@ -531,7 +510,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('andymass/vim-matchup')
   call dein#add('ap/vim-css-color')
   call dein#add('bling/vim-airline')
-  call dein#add('cespare/vim-toml')
   call dein#add('dag/vim-fish')
   call dein#add('dense-analysis/ale')
   call dein#add('digitaltoad/vim-jade')
