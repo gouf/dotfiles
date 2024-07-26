@@ -484,7 +484,6 @@ if dein#load_state(s:dein_dir)
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  " call dein#add('neoclide/coc.nvim')
   call dein#add('autozimu/LanguageClient-neovim', {
         \ 'rev': 'next',
         \ 'build': 'bash install.sh',
@@ -492,7 +491,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('2072/PHP-Indenting-for-VIm')
   call dein#add('IJustDev/vim-ruby-refactoring')
   call dein#add('wakatime/vim-wakatime')
-	call dein#add('neoclide/coc.nvim', {'rev': 'release'})
+  call dein#add('neoclide/coc.nvim', {'rev': 'release'})
   call dein#add('Shougo/neoyank.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler')
