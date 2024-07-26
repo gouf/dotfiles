@@ -161,12 +161,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:easytags_async = 1
 let g:easytags_syntax_keyword = 'always'
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_min_syntax_length = 4
-
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
 
@@ -498,7 +492,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('2072/PHP-Indenting-for-VIm')
   call dein#add('IJustDev/vim-ruby-refactoring')
   call dein#add('wakatime/vim-wakatime')
-  " call dein#add('Shougo/neocomplcache')
+	call dein#add('neoclide/coc.nvim', {'rev': 'release'})
   call dein#add('Shougo/neoyank.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimfiler')
@@ -566,12 +560,12 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-scripts/less-syntax')
   call dein#add('vim-scripts/todolist.vim')
   call dein#add('weirongxu/plantuml-previewer.vim')
-  call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('xolox/vim-easytags')
   call dein#add('xolox/vim-misc')
   call dein#add('yuttie/comfortable-motion.vim')
   " Color Scheme
   call dein#add('nanotech/jellybeans.vim')
+
 
   " Required:
   call dein#end()
@@ -584,7 +578,6 @@ if dein#check_install()
 endif
 
 execute pathogen#infect()
-
 se statusline+=%#warningmsg#
 se statusline+=%*
 
